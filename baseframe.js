@@ -4,20 +4,18 @@ function startScreen() {
   poetic = document.createElement("h1"); poetic.innerText = "Poetic";
 
   left.className = "practical button light"; right.className = "poetic button dark";
-  left.addEventListener("click", () => chooseType("practical")); right.addEventListener("click", () => chooseType("poetic"));
+  left.addEventListener("click", launchPractical); right.addEventListener("click", initApp);
   left.appendChild(prac); right.appendChild(poetic);
 }
 
-function chooseType(name) {
-  if (name === "practical") console.log("practical");
-  else if (name === "poetic") initApp();
-}
+function launchPractical() {};
 
 window.onload = startScreen();
 
 // ================================ INIT CANVAS ================================
 function initApp() {
   left.innerHTML = ""; right.innerHTML = "";
+  left.removeEventListener("click", launchPractical);
   //Create PIXI application and add to body
   app = new PIXI.Application({
     backgroundColor: 0x202020, //Just add 0x and then a hex code.

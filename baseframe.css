@@ -7,8 +7,9 @@
 body {
   margin-left: 0;
   margin-right: 0;
-  height: 99vh;
-  width: 99vw;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 div.row {
@@ -22,14 +23,15 @@ div.row > div {
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   flex: 1;
 }
 
 div.row > div#left {
-  padding-left: 40px;
-  padding-top: 50px;
-  padding-bottom: 30px;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  overflow-y: auto;
 }
 
 /* =============== COLOURS ================== */
@@ -46,7 +48,7 @@ div.row > div.button:hover {
 div#left > button.poetic {
   background-color: rgba(0,0,0,0);
   max-width: fit-content;
-  margin: 1em auto;
+  margin: auto;
   padding: 0.2em 0.8em;
   border: dashed 2px white;
   border-radius: 5px;

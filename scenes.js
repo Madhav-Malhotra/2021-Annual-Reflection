@@ -28,6 +28,7 @@ const slides = {
   "9": () => scene9(),
   "10": () => scene10(),
   "11": () => scene11(),
+  "12": () => scene12()
 };
 
 const slideText = {
@@ -137,7 +138,7 @@ function scene3() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
+  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 4);
 
   app.stage.addChild(scene);
 }
@@ -166,7 +167,7 @@ function scene4() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
+  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 5);
 
   app.stage.addChild(scene);
 }
@@ -178,7 +179,7 @@ function scene5() {
   const hill = new PIXI.Sprite(s['roundHill.png']);
 
   //Init Text
-  const poem = slideText["4"];
+  const poem = slideText["5"];
   for (el of poem.slice(0, poem.length - 1)) {
     const p = document.createElement("p")
     p.innerText = el;
@@ -195,7 +196,7 @@ function scene5() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
+  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 6);
 
   app.stage.addChild(scene);
 }
@@ -207,7 +208,7 @@ function scene6() {
   const hill = new PIXI.Sprite(s['roundHill.png']);
 
   //Init Text
-  const poem = slideText["4"];
+  const poem = slideText["6"];
   for (el of poem.slice(0, poem.length - 1)) {
     const p = document.createElement("p")
     p.innerText = el;
@@ -224,7 +225,7 @@ function scene6() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
+  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 7);
 
   app.stage.addChild(scene);
 }
@@ -236,7 +237,7 @@ function scene7() {
   const hill = new PIXI.Sprite(s['roundHill.png']);
 
   //Init Text
-  const poem = slideText["4"];
+  const poem = slideText["7"];
   for (el of poem.slice(0, poem.length - 1)) {
     const p = document.createElement("p")
     p.innerText = el;
@@ -253,7 +254,7 @@ function scene7() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
+  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 8);
 
   app.stage.addChild(scene);
 }
@@ -265,7 +266,7 @@ function scene8() {
   const hill = new PIXI.Sprite(s['roundHill.png']);
 
   //Init Text
-  const poem = slideText["4"];
+  const poem = slideText["8"];
   for (el of poem.slice(0, poem.length - 1)) {
     const p = document.createElement("p")
     p.innerText = el;
@@ -282,7 +283,7 @@ function scene8() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
+  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 9);
 
   app.stage.addChild(scene);
 }
@@ -294,7 +295,7 @@ function scene9() {
   const hill = new PIXI.Sprite(s['roundHill.png']);
 
   //Init Text
-  const poem = slideText["4"];
+  const poem = slideText["9"];
   for (el of poem.slice(0, poem.length - 1)) {
     const p = document.createElement("p")
     p.innerText = el;
@@ -311,7 +312,7 @@ function scene9() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
+  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 10);
 
   app.stage.addChild(scene);
 }
@@ -323,7 +324,7 @@ function scene10() {
   const hill = new PIXI.Sprite(s['roundHill.png']);
 
   //Init Text
-  const poem = slideText["4"];
+  const poem = slideText["10"];
   for (el of poem.slice(0, poem.length - 1)) {
     const p = document.createElement("p")
     p.innerText = el;
@@ -340,7 +341,7 @@ function scene10() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
+  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 11);
 
   app.stage.addChild(scene);
 }
@@ -352,7 +353,7 @@ function scene11() {
   const hill = new PIXI.Sprite(s['roundHill.png']);
 
   //Init Text
-  const poem = slideText["4"];
+  const poem = slideText["11"];
   for (el of poem.slice(0, poem.length - 1)) {
     const p = document.createElement("p")
     p.innerText = el;
@@ -369,7 +370,7 @@ function scene11() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
+  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 12);
 
   app.stage.addChild(scene);
 }
@@ -381,7 +382,7 @@ function scene12() {
   const hill = new PIXI.Sprite(s['roundHill.png']);
 
   //Init Text
-  const poem = slideText["4"];
+  const poem = slideText["12"];
   for (el of poem.slice(0, poem.length - 1)) {
     const p = document.createElement("p")
     p.innerText = el;
@@ -398,7 +399,7 @@ function scene12() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
+  //cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
 
   app.stage.addChild(scene);
 }
