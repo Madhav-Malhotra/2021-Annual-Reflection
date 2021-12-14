@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PIXI Playground</title>
+</head>
+
+<body>
+  <script src="pixi.min.js"></script>
+  <script>
+    let app;
+    function initApp() {
+      //Create PIXI application and add to body
+      app = new PIXI.Application({
+        width: window.innerWidth,
+        height: window.innerHeight,
+        backgroundColor: "#000"
+      });
+
+      document.body.appendChild(app.view); //view refers to canvas el
+    };
+
+    window.onload = initApp();
+
+
+    //Load spritesheet frames
+    const spriteSheet = new PIXI.BaseTexture.from("./Jellyfish Sprite Sheet.png");
+    let upDownSeq = []; let floatSeq = []; let squiqqlySeq = []; let popSeq = [];
+    let allSeq = [upDownSeq, floatSeq, squiqqlySeq, popSeq];
+    const w = 32; const h = 32;
+
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        const frame = new PIXI.Texture(spriteSheet, new PIXI.Rectangle(j * w, i * h, w, h));
+        allSeq[i].push(frame);
+      }
+      //Last animation has more frames
+      if (i === 3) popSeq.push(new PIXI.Texture(spriteSheet, new PIXI.Rectangle(4 * w, 3 * h, w, h)));
+
+      //Display spritesheet frames
+      let animation = new PIXI.AnimatedSprite(allSeq[i]);
+      animation.loop = true;
+      animation.anchor.set(0.5); animation.scale.x = 4; animation.scale.y = 4;
+      animation.animationSpeed = 0.1; //>1 = faster, <1 = slower. No units
+      animation.x = app.view.width / 5 * i + app.view.width * 0.1;
+      animation.y = app.view.height / 2;
+      app.stage.addChild(animation);
+      animation.play();
+    }
+
+
+    //Try loading Nicky Case's Spritesheet
+    let loader = PIXI.Loader.shared;
+    loader.add("name.json").load(setup)
+
+
+    function setup() {
+      let sheet = loader.resources["name.json"].spritesheet;
+
+      sprite = sheet.textures["frame0"];
+      sprite = new PIXI.Sprite(baseChar); //DON'T FORGET THIS!
+    }
+
+    setTimeout(() => loader.add("plant.json").load(my_setup), 1000);
+
+    //Load my plants
+    function my_setup() {
+      let sheet = loader.resources["plant.json"].spritesheet;
+      console.log(Object.values(sheet.textures));
+      let anim = new PIXI.AnimatedSprite(Object.values(sheet.textures));
+      anim.loop = true;
+      anim.scale.x = 1 / 1.2; anim.scale.y = 1 / 1.2;
+      anim.animationSpeed = 0.25; //>1 = faster, <1 = slower. No units
+      anim.x = app.view.width * 0.4; anim.y = app.view.height * 0.6;
+
+      app.stage.addChild(anim);
+      anim.play();
+    }
+
+  </script>
+</body>
+
+</html>
