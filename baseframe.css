@@ -34,6 +34,10 @@ div.row > div#left {
   overflow-y: auto;
 }
 
+*.vcentre {
+  margin: auto;
+}
+
 /* =============== COLOURS ================== */
 div.row > div.dark {
   background-color: #202020;
@@ -48,7 +52,9 @@ div.row > div.button:hover {
 div#left > button.poetic {
   background-color: rgba(0,0,0,0);
   max-width: fit-content;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;  
   padding: 0.2em 0.8em;
   border: dashed 2px white;
   border-radius: 5px;

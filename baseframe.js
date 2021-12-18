@@ -1,7 +1,7 @@
 // ================================ START SCREEN ================================
 function startScreen() {
-  prac = document.createElement("h1"); prac.innerText = "Practical";
-  poetic = document.createElement("h1"); poetic.innerText = "Poetic";
+  prac = document.createElement("h1"); prac.innerText = "Practical"; prac.className = "vcentre";
+  poetic = document.createElement("h1"); poetic.innerText = "Poetic"; poetic.className = "vcentre";
 
   left.className = "practical button light"; right.className = "poetic button dark";
   left.addEventListener("click", launchPractical); right.addEventListener("click", initApp);

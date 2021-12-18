@@ -89,7 +89,10 @@ function scene2() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/2/2.json"].spritesheet.textures;
+  const body = new PIXI.Sprite(s['Body.png']); 
   const hill = new PIXI.Sprite(s['roundHill.png']);
+  let eyes = [new PIXI.Sprite(s['Eyes.png']), new PIXI.Sprite(s['ClosedEyes.png'])]; 
+  eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0);  
 
   //Init Text
   const poem = slideText["2"];
@@ -103,12 +106,24 @@ function scene2() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
+  person.addChild(body); person.addChild(eyes);
+  person.scale.x = 0.5; person.scale.y = 0.5; person.x = app.width / 3; person.y = app.height / 6; 
   hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
 
   //Create animation
+  Tween.get(person, {loop: true})
+    .to({y: app.height / 8}, 1500, createjs.Ease.sineInOut)
+    .to({y: app.height / 6}, 1500, createjs.Ease.sineInOut)
+  const blinkingEyes = () => {
+    if (eyes.currentFrame == 0 && Math.random() > 0.6) {
+      eyes.gotoAndStop(1);
+      setTimeout(() => eyes.gotoAndStop(0), 100);
+    }
+  };
+  intervalHandler("blinkingEyes", 1000, blinkingEyes, "add");
 
   //Add to screen
-  scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
+  scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
   cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
 
   app.stage.addChild(scene);
@@ -118,7 +133,10 @@ function scene3() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/3/3.json"].spritesheet.textures;
+  const body = new PIXI.Sprite(s['Body.png']); 
   const hill = new PIXI.Sprite(s['roundHill.png']);
+  let eyes = [new PIXI.Sprite(s['Eyes.png']), new PIXI.Sprite(s['ClosedEyes.png'])]; 
+  eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0);
 
   //Init Text
   const poem = slideText["3"];
@@ -132,12 +150,24 @@ function scene3() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
+  person.addChild(body); person.addChild(eyes);
+  person.scale.x = 0.5; person.scale.y = 0.5; person.x = app.width / 3; person.y = app.height / 6; 
   hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
 
   //Create animation
+  Tween.get(person, {loop: true})
+    .to({y: app.height / 8}, 1500, createjs.Ease.sineInOut)
+    .to({y: app.height / 6}, 1500, createjs.Ease.sineInOut)
+  const blinkingEyes = () => {
+    if (eyes.currentFrame == 0 && Math.random() > 0.6) {
+      eyes.gotoAndStop(1);
+      setTimeout(() => eyes.gotoAndStop(0), 100);
+    }
+  };
+  intervalHandler("blinkingEyes", 1000, blinkingEyes, "add");
 
   //Add to screen
-  scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
+  scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
   cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 4);
 
   app.stage.addChild(scene);
@@ -147,7 +177,10 @@ function scene4() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/4/4.json"].spritesheet.textures;
+  const body = new PIXI.Sprite(s['Body.png']); 
   const hill = new PIXI.Sprite(s['roundHill.png']);
+  let eyes = [new PIXI.Sprite(s['Eyes.png']), new PIXI.Sprite(s['ClosedEyes.png'])]; 
+  eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0);
 
   //Init Text
   const poem = slideText["4"];
@@ -161,12 +194,24 @@ function scene4() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
+  person.addChild(body); person.addChild(eyes);
+  person.scale.x = 0.5; person.scale.y = 0.5; person.x = app.width / 3; person.y = app.height / 6; 
   hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
 
   //Create animation
+  Tween.get(person, {loop: true})
+    .to({y: app.height / 8}, 1500, createjs.Ease.sineInOut)
+    .to({y: app.height / 6}, 1500, createjs.Ease.sineInOut)
+  const blinkingEyes = () => {
+    if (eyes.currentFrame == 0 && Math.random() > 0.6) {
+      eyes.gotoAndStop(1);
+      setTimeout(() => eyes.gotoAndStop(0), 100);
+    }
+  };
+  intervalHandler("blinkingEyes", 1000, blinkingEyes, "add");
 
   //Add to screen
-  scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
+  scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
   cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 5);
 
   app.stage.addChild(scene);
