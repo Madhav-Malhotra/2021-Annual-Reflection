@@ -8,7 +8,9 @@ function startScreen() {
   left.appendChild(prac); right.appendChild(poetic);
 }
 
-function launchPractical() {};
+function launchPractical() {
+  window.location = "/practical.html";
+};
 
 window.onload = startScreen();
 

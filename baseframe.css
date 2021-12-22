@@ -44,6 +44,10 @@ div.row > div.dark {
   color: #FFF;
 }
 
+div.row > div.practical {
+  background-color: #e5d6b6;
+}
+
 div.row > div.button:hover {
   opacity: 0.7;
   cursor: pointer;
