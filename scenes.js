@@ -49,9 +49,9 @@ function scene1() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/1/1.json"].spritesheet.textures;
-  const body = new PIXI.Sprite(s['Body.png']); 
-  const hill = new PIXI.Sprite(s['roundHill.png']);
-  let eyes = [new PIXI.Sprite(s['Eyes.png']), new PIXI.Sprite(s['ClosedEyes.png'])]; 
+  const body = new PIXI.Sprite(s['BodyWithArms1.png']); 
+  const hill = new PIXI.Sprite(s['roundHill1.png']);
+  let eyes = [new PIXI.Sprite(s['Eyes1.png']), new PIXI.Sprite(s['ClosedEyes1.png'])]; 
   eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0);
 
   //Init Text
@@ -63,7 +63,7 @@ function scene1() {
   person.addChild(body); 
   person.addChild(eyes);
   person.scale.x = 0.5; person.scale.y = 0.5; person.x = app.width / 3; person.y = app.height / 6; 
-  hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
+  hill.scale.x = 1/1.24; hill.scale.y = 1/1.26; hill.y = app.height / 20;
 
   //Create animation
   Tween.get(person, {loop: true})
@@ -88,10 +88,10 @@ function scene1() {
 function scene2() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
-  const s = loader.resources["assets/2/2.json"].spritesheet.textures;
-  const body = new PIXI.Sprite(s['Body.png']); 
-  const hill = new PIXI.Sprite(s['roundHill.png']);
-  let eyes = [new PIXI.Sprite(s['Eyes.png']), new PIXI.Sprite(s['ClosedEyes.png'])]; 
+  const s = loader.resources["assets/2/2.json"].spritesheet.textures; const s1 = loader.resources["assets/1/1.json"].spritesheet.textures;
+  const body = new PIXI.Sprite(s['Body2.png']);
+  const leftArm = new PIXI.Sprite(s['LeftArm2.png']); const rightArm = new PIXI.Sprite(s['RightArm2.png']);
+  let eyes = [new PIXI.Sprite(s1['Eyes1.png']), new PIXI.Sprite(s['SmilingEyes2.png'])]; 
   eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0);  
 
   //Init Text
@@ -106,9 +106,8 @@ function scene2() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
-  person.addChild(body); person.addChild(eyes);
-  person.scale.x = 0.5; person.scale.y = 0.5; person.x = app.width / 3; person.y = app.height / 6; 
-  hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
+  person.addChild(body); person.addChild(eyes); person.addChild(leftArm); person.addChild(rightArm);
+  person.scale.x = 0.7; person.scale.y = 0.7; person.x = app.width / 3; person.y = app.height / 6; 
 
   //Create animation
   Tween.get(person, {loop: true})
@@ -117,13 +116,17 @@ function scene2() {
   const blinkingEyes = () => {
     if (eyes.currentFrame == 0 && Math.random() > 0.6) {
       eyes.gotoAndStop(1);
-      setTimeout(() => eyes.gotoAndStop(0), 100);
+      setTimeout(() => eyes.gotoAndStop(0), 1500);
     }
+    Tween.get(leftArm)
+      .to({angle: 10}, 1000, createjs.Ease.sineInOut)
+      .to({angle: 0}, 1000, createjs.Ease.sineInOut)
+
   };
-  intervalHandler("blinkingEyes", 1000, blinkingEyes, "add");
+  intervalHandler("blinkingEyes", 2500, blinkingEyes, "add");
 
   //Add to screen
-  scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
+  scene.addChild(person); //addChild for PIXI.js el. appendChild for DOM el
   cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
 
   app.stage.addChild(scene);

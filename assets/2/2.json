@@ -1,6 +1,6 @@
 {"frames": {
 
-"Body.png":
+"Body2.png":
 {
 	"frame": {"x":0,"y":0,"w":500,"h":700},
 	"rotated": false,
@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
 	"sourceSize": {"w":500,"h":700}
 },
-"ClosedEyes.png":
+"LeftArm2.png":
 {
 	"frame": {"x":500,"y":0,"w":500,"h":700},
 	"rotated": false,
@@ -16,29 +16,29 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
 	"sourceSize": {"w":500,"h":700}
 },
-"Eyes.png":
+"RightArm2.png":
 {
-	"frame": {"x":0,"y":700,"w":500,"h":700},
+	"frame": {"x":1000,"y":0,"w":500,"h":700},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
 	"sourceSize": {"w":500,"h":700}
 },
-"roundHill.png":
+"SmilingEyes2.png":
 {
-	"frame": {"x":500,"y":700,"w":873,"h":782},
+	"frame": {"x":1500,"y":0,"w":500,"h":700},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":873,"h":782},
-	"sourceSize": {"w":873,"h":782}
+	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
+	"sourceSize": {"w":500,"h":700}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "2.png",
 	"format": "RGBA8888",
-	"size": {"w":1373,"h":1482},
+	"size": {"w":2000,"h":700},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:f87f23b00c6d9d315163af7aa5edde4e:c4a362a6939011366e8ebf2df4b161e1:f91cade670d3cd0da3efe30dce0ef325$"
+	"smartupdate": "$TexturePacker:SmartUpdate:02e645c6246ed47f415d83e410e6d669:22892178d94d10bc5118f98f3e6798de:5ed6fcaeb66fa059fba7886eb3eee15a$"
 }
 }

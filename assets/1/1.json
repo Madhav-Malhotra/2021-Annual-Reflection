@@ -1,6 +1,6 @@
 {"frames": {
 
-"Body.png":
+"BodyWithArms1.png":
 {
 	"frame": {"x":0,"y":0,"w":500,"h":700},
 	"rotated": false,
@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
 	"sourceSize": {"w":500,"h":700}
 },
-"ClosedEyes.png":
+"ClosedEyes1.png":
 {
 	"frame": {"x":500,"y":0,"w":500,"h":700},
 	"rotated": false,
@@ -16,7 +16,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
 	"sourceSize": {"w":500,"h":700}
 },
-"Eyes.png":
+"Eyes1.png":
 {
 	"frame": {"x":0,"y":700,"w":500,"h":700},
 	"rotated": false,
@@ -24,7 +24,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
 	"sourceSize": {"w":500,"h":700}
 },
-"roundHill.png":
+"roundHill1.png":
 {
 	"frame": {"x":500,"y":700,"w":873,"h":782},
 	"rotated": false,
