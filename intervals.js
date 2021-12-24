@@ -7,5 +7,6 @@ function intervalHandler(intervalName, intervalDuration, intervalCode, task) {
   } else if (task == "remove") {
     const id = intervalManifest[intervalName];
     clearInterval(id);
+    delete intervalManifest[intervalName];
   }
 }

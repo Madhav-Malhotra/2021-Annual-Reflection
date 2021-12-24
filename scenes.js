@@ -18,6 +18,15 @@ function slidesChange(intervals, slideNum) {
   else sceneLoad();
 }
 
+function changeLink(intervals, i) {
+  const nav = document.querySelector("div.menu");
+  for (let j = 0; j < 12; j++) {
+    if (j+1 != i) nav.children[j].className = "";
+    else nav.children[j].className = "active";
+  }
+  slidesChange(intervals, i);
+}
+
 const slides = {
   "1": () => scene1(),
   "2": () => scene2(),
@@ -46,6 +55,22 @@ const slideText = {
   "11": ["My story may not have had a happy beginning.","Yet it is not the beginning that defines a story.","","Art is to choose to create;","Knowing full well its lack of meaning;","And its inevitable demise.","","The excitement of creativity,","The pull of curiosity,","The relief of humour,","The awe of nature,","The compassion of giving.","","There are things that can block the meaningless of life.","","To live is to create meaning.","To live is art.","","The road still carries on."],
   "12": ["Just as I am within the universe.","The universe is within me.","There is no world","But the world I choose to see.","","I am the source of darkness.","I am the source of light.","I am the lighter of torches.","The only citadel in night.","","Be not master of my fate","I am captain of my soul.","","The road still carries on."],
 }
+
+const slideIntervals = {
+  "1": [],
+  "2": [],
+  "3": [],
+  "4": [],
+  "5": [],
+  "6": [],
+  "7": [],
+  "8": [],
+  "9": [],
+  "10": [],
+  "11": [],
+  "12": [],
+}
+
 // ================================ SCENES ================================
 function scene1() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
@@ -82,7 +107,7 @@ function scene1() {
   //Add to screen
   scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
   left.appendChild(title); left.appendChild(text); left.appendChild(button);
-  cleanIntervals = ["blinkingEyes"]; button.onclick = () => slidesChange(cleanIntervals, 2);
+  slideIntervals["1"] = ["blinkingEyes"]; button.onclick = () => changeLink(slideIntervals[1], 2);
 
   app.stage.addChild(scene);
 }
@@ -146,7 +171,7 @@ function scene2() {
   //Add to screen
   scene.addChild(person); //addChild for PIXI.js el. appendChild for DOM el
   scene.addChild(child);
-  cleanIntervals = ["eyesAndRock"]; button.onclick = () => slidesChange(cleanIntervals, 3);
+  slideIntervals[2] = ["eyesAndRock"]; button.onclick = () => changeLink(slideIntervals[2], 3);
 
   app.stage.addChild(scene);
 }
@@ -172,16 +197,27 @@ function scene3() {
   //Size
   person.addChild(body);
   person.scale.x = 0.5; person.scale.y = 0.5; person.x = app.width / 3; person.y = app.height / 6; 
-  hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
+  hill.scale.x = 1/1.24; hill.scale.y = 1/1.26; hill.anchor.set(0.75,0.2);
 
   //Create animation
+  Tween.get(hill, {loop: true})
+    .wait(500)
+    .to({x: 500, y: -10}, 1000, createjs.Ease.sineIn)
+    .to({x: 1000, y: 350}, 700)
+    .to({x: 1932, y: 613}, 1600, createjs.Ease.sineOut)
+    .call(() => {
+      Tween.get(person)
+      .to({y: app.height / 8}, 1500, createjs.Ease.sineInOut)
+      .to({y: app.height / 6}, 1500, createjs.Ease.sineInOut)
+    })
+    .wait(1500)
   Tween.get(person, {loop: true})
-    .to({y: app.height / 8}, 1500, createjs.Ease.sineInOut)
-    .to({y: app.height / 6}, 1500, createjs.Ease.sineInOut)
+    .wait(500)
+    .wait(1500)
 
   //Add to screen
   scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 4);
+  button.onclick = () => changeLink(slideIntervals[3], 4);
 
   app.stage.addChild(scene);
 }
@@ -225,7 +261,7 @@ function scene4() {
 
   //Add to screen
   scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 5);
+  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 5);
 
   app.stage.addChild(scene);
 }
@@ -254,7 +290,7 @@ function scene5() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 6);
+  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 6);
 
   app.stage.addChild(scene);
 }
@@ -283,7 +319,7 @@ function scene6() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 7);
+  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 7);
 
   app.stage.addChild(scene);
 }
@@ -312,7 +348,7 @@ function scene7() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 8);
+  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 8);
 
   app.stage.addChild(scene);
 }
@@ -341,7 +377,7 @@ function scene8() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 9);
+  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 9);
 
   app.stage.addChild(scene);
 }
@@ -370,7 +406,7 @@ function scene9() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 10);
+  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 10);
 
   app.stage.addChild(scene);
 }
@@ -399,7 +435,7 @@ function scene10() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 11);
+  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 11);
 
   app.stage.addChild(scene);
 }
@@ -428,7 +464,7 @@ function scene11() {
 
   //Add to screen
   scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 12);
+  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 12);
 
   app.stage.addChild(scene);
 }
