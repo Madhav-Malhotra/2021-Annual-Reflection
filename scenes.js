@@ -13,7 +13,9 @@ function slidesChange(intervals, slideNum) {
   for (i of intervals) { intervalHandler(i, null, null, "remove"); }
   app.stage.removeChildren(); left.innerHTML = "";
   const sceneLoad = slides[slideNum];
-  loader.add(`assets/${slideNum}/${slideNum}.json`).load(sceneLoad);
+  const pos = `assets/${slideNum}/${slideNum}.json`;
+  if (!loader.resources[pos]) loader.add(pos).load(sceneLoad);
+  else sceneLoad();
 }
 
 const slides = {
