@@ -90,9 +90,9 @@ function scene2() {
   //Init Sprites
   const s1 = loader.resources["assets/1/1.json"].spritesheet.textures;
   const s = loader.resources["assets/2/2.json"].spritesheet.textures;
-  const body = new PIXI.Sprite(s['Body2.png']);
+  const body = new PIXI.Sprite(s['Body2.png']); const child = new PIXI.Sprite(s["Body2.png"]);
   const leftArm = new PIXI.Sprite(s['Left_trim2.png']); const rightArm = new PIXI.Sprite(s['Right_trim2.png']);
-  let eyes = [new PIXI.Sprite(s1['Eyes1.png']), new PIXI.Sprite(s['SmilingEyes2.png'])]; 
+  let eyes = [new PIXI.Sprite(s1['Eyes1.png']), new PIXI.Sprite(s['SmilingEyes2.png'])]; const oneEye = new PIXI.Sprite(s["OneEye2.png"]);
   eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0);  
 
   //Init Text
@@ -111,11 +111,17 @@ function scene2() {
   person.scale.x = 0.7; person.scale.y = 0.7; person.x = app.width / 3; person.y = app.height / 6; 
   leftArm.pivot.set(0, 0); leftArm.x = person.width / 2.2; leftArm.y = person.height / 1.35; leftArm.angle = 20;
   rightArm.pivot.set(0, 0); rightArm.x = person.width / 1.2; rightArm.y = person.height / 1.35; rightArm.angle = 30;
+  
+  child.addChild(oneEye); oneEye.x = child.width / 5;
+  child.scale.x = 0.22; child.scale.y = 0.22; child.x = app.width / 2.3; child.y = app.height / 1.3; child.angle = -88;
 
   //Create animation
   Tween.get(person, {loop: true})
     .to({y: app.height / 8}, 1500, createjs.Ease.sineInOut)
     .to({y: app.height / 6}, 1500, createjs.Ease.sineInOut)
+  Tween.get(child, {loop: true})
+  .to({y: app.height / 1.37}, 1500, createjs.Ease.sineInOut)
+  .to({y: app.height / 1.3}, 1500, createjs.Ease.sineInOut)
   const eyesAndRock = () => {
     if (eyes.currentFrame == 0 && Math.random() > 0.6) {
       eyes.gotoAndStop(1);
@@ -128,12 +134,16 @@ function scene2() {
       Tween.get(rightArm)
         .to({angle: -10}, 1200, createjs.Ease.sineInOut)
         .to({angle: 30}, 1200, createjs.Ease.sineInOut)
-      }
+      Tween.get(child)
+      .to({angle: -92, x: app.width / 1.9}, 1200, createjs.Ease.sineInOut)
+      .to({angle: -88, x: app.width / 2.3}, 1200, createjs.Ease.sineInOut)
+    }
   };
   intervalHandler("eyesAndRock", 2500, eyesAndRock, "add");
 
   //Add to screen
   scene.addChild(person); //addChild for PIXI.js el. appendChild for DOM el
+  scene.addChild(child);
   cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
 
   app.stage.addChild(scene);
