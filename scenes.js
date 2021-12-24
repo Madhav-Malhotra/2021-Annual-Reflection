@@ -88,9 +88,10 @@ function scene1() {
 function scene2() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
-  const s = loader.resources["assets/2/2.json"].spritesheet.textures; const s1 = loader.resources["assets/1/1.json"].spritesheet.textures;
+  const s1 = loader.resources["assets/1/1.json"].spritesheet.textures;
+  const s = loader.resources["assets/2/2.json"].spritesheet.textures;
   const body = new PIXI.Sprite(s['Body2.png']);
-  const leftArm = new PIXI.Sprite(s['LeftArm2.png']); const rightArm = new PIXI.Sprite(s['RightArm2.png']);
+  const leftArm = new PIXI.Sprite(s['Left_trim2.png']); const rightArm = new PIXI.Sprite(s['Right_trim2.png']);
   let eyes = [new PIXI.Sprite(s1['Eyes1.png']), new PIXI.Sprite(s['SmilingEyes2.png'])]; 
   eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0);  
 
@@ -108,22 +109,28 @@ function scene2() {
   //Size
   person.addChild(body); person.addChild(eyes); person.addChild(leftArm); person.addChild(rightArm);
   person.scale.x = 0.7; person.scale.y = 0.7; person.x = app.width / 3; person.y = app.height / 6; 
+  leftArm.pivot.set(0, 0); leftArm.x = person.width / 2.2; leftArm.y = person.height / 1.35; leftArm.angle = 20;
+  rightArm.pivot.set(0, 0); rightArm.x = person.width / 1.2; rightArm.y = person.height / 1.35; rightArm.angle = 30;
 
   //Create animation
   Tween.get(person, {loop: true})
     .to({y: app.height / 8}, 1500, createjs.Ease.sineInOut)
     .to({y: app.height / 6}, 1500, createjs.Ease.sineInOut)
-  const blinkingEyes = () => {
+  const eyesAndRock = () => {
     if (eyes.currentFrame == 0 && Math.random() > 0.6) {
       eyes.gotoAndStop(1);
       setTimeout(() => eyes.gotoAndStop(0), 1500);
     }
-    Tween.get(leftArm)
-      .to({angle: 10}, 1000, createjs.Ease.sineInOut)
-      .to({angle: 0}, 1000, createjs.Ease.sineInOut)
-
+    if (Math.random() > 0.5) {
+      Tween.get(leftArm)
+      .to({angle: -10}, 1200, createjs.Ease.sineInOut)
+      .to({angle: 20}, 1200, createjs.Ease.sineInOut)
+      Tween.get(rightArm)
+        .to({angle: -10}, 1200, createjs.Ease.sineInOut)
+        .to({angle: 30}, 1200, createjs.Ease.sineInOut)
+      }
   };
-  intervalHandler("blinkingEyes", 2500, blinkingEyes, "add");
+  intervalHandler("eyesAndRock", 2500, eyesAndRock, "add");
 
   //Add to screen
   scene.addChild(person); //addChild for PIXI.js el. appendChild for DOM el

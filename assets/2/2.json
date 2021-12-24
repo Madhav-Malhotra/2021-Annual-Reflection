@@ -8,25 +8,25 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
 	"sourceSize": {"w":500,"h":700}
 },
-"LeftArm2.png":
+"Left_trim2.png":
 {
-	"frame": {"x":500,"y":0,"w":500,"h":700},
+	"frame": {"x":0,"y":700,"w":39,"h":164},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
-	"sourceSize": {"w":500,"h":700}
+	"spriteSourceSize": {"x":0,"y":0,"w":39,"h":164},
+	"sourceSize": {"w":39,"h":164}
 },
-"RightArm2.png":
+"Right_trim2.png":
 {
-	"frame": {"x":1000,"y":0,"w":500,"h":700},
+	"frame": {"x":39,"y":700,"w":70,"h":155},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
-	"sourceSize": {"w":500,"h":700}
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":155},
+	"sourceSize": {"w":70,"h":155}
 },
 "SmilingEyes2.png":
 {
-	"frame": {"x":1500,"y":0,"w":500,"h":700},
+	"frame": {"x":0,"y":864,"w":500,"h":700},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
@@ -37,8 +37,8 @@
 	"version": "1.0",
 	"image": "2.png",
 	"format": "RGBA8888",
-	"size": {"w":2000,"h":700},
+	"size": {"w":500,"h":1564},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:02e645c6246ed47f415d83e410e6d669:22892178d94d10bc5118f98f3e6798de:5ed6fcaeb66fa059fba7886eb3eee15a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ba24c73d7a2bdd6478c051c1fb3d2c96:23ba2753fecff4120b6dcba0b6e75e68:5273c9a3668c9529a3ade9e889dc1841$"
 }
 }
