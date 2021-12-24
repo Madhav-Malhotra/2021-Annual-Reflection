@@ -12,15 +12,19 @@
 
 <body>
   <div class="row">
-    <div class="col-md-12 col-lg-6 text-center" id="left"></div>
-    <div class="col-md-12 col-lg-6" id="right"></div>
+    <div class="col-md-12 col-lg-6 text-center practical button light" id="practical" onclick="launch(this)">
+      <h1 class="vcentre">Practical</h1>)
+    </div>
+    <div class="col-md-12 col-lg-6 poetic button dark" id="poetic" onclick="launch(this)">
+      <h1 class="vcentre">Poetic</h1>
+    </div>
   </div>
-
-  <script src="./assets/pixi.min.js"></script>
-  <script src="./assets/tweenjs.min.js"></script>
-  <script src="./intervals.js"></script>
-  <script src="./scenes.js"></script>
-  <script src="./baseframe.js"></script>
 </body>
+
+<script>
+  function launch(div) {
+    window.location = "./" + div.id + ".html";
+  }
+</script>
 
 </html>

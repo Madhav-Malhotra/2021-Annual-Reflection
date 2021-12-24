@@ -38,6 +38,19 @@ div.row > div#left {
   margin: auto;
 }
 
+div.menu > a {
+  padding: 4px 12px;
+  border-radius: 15px;
+  background-color: rgba(255,255,255,0.5);
+  margin-right: 6px;
+  transition: 0.3s;
+}
+
+div.menu > a:hover {
+  background-color: rgba(255,255,255);
+  text-decoration: none;
+}
+
 /* =============== COLOURS ================== */
 div.row > div.dark {
   background-color: #202020;

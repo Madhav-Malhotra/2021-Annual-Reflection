@@ -92,7 +92,7 @@ function scene2() {
   const s = loader.resources["assets/2/2.json"].spritesheet.textures;
   const body = new PIXI.Sprite(s['Body2.png']); const child = new PIXI.Sprite(s["Body2.png"]);
   const leftArm = new PIXI.Sprite(s['Left_trim2.png']); const rightArm = new PIXI.Sprite(s['Right_trim2.png']);
-  let eyes = [new PIXI.Sprite(s1['Eyes1.png']), new PIXI.Sprite(s['SmilingEyes2.png'])]; const oneEye = new PIXI.Sprite(s["OneEye2.png"]);
+  let eyes = [new PIXI.Sprite(s['SmilingEyes2.png']), new PIXI.Sprite(s1['Eyes1.png'])]; const oneEye = new PIXI.Sprite(s["OneEye2.png"]);
   eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0);  
 
   //Init Text
@@ -144,7 +144,7 @@ function scene2() {
   //Add to screen
   scene.addChild(person); //addChild for PIXI.js el. appendChild for DOM el
   scene.addChild(child);
-  cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
+  cleanIntervals = ["eyesAndRock"]; button.onclick = () => slidesChange(cleanIntervals, 3);
 
   app.stage.addChild(scene);
 }
@@ -153,10 +153,8 @@ function scene3() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/3/3.json"].spritesheet.textures;
-  const body = new PIXI.Sprite(s['Body.png']); 
-  const hill = new PIXI.Sprite(s['roundHill.png']);
-  let eyes = [new PIXI.Sprite(s['Eyes.png']), new PIXI.Sprite(s['ClosedEyes.png'])]; 
-  eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0);
+  const body = new PIXI.Sprite(s['Body3.png']); 
+  const hill = new PIXI.Sprite(s['Hill3.png']);
 
   //Init Text
   const poem = slideText["3"];
@@ -170,7 +168,7 @@ function scene3() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
-  person.addChild(body); person.addChild(eyes);
+  person.addChild(body);
   person.scale.x = 0.5; person.scale.y = 0.5; person.x = app.width / 3; person.y = app.height / 6; 
   hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
 
@@ -178,13 +176,6 @@ function scene3() {
   Tween.get(person, {loop: true})
     .to({y: app.height / 8}, 1500, createjs.Ease.sineInOut)
     .to({y: app.height / 6}, 1500, createjs.Ease.sineInOut)
-  const blinkingEyes = () => {
-    if (eyes.currentFrame == 0 && Math.random() > 0.6) {
-      eyes.gotoAndStop(1);
-      setTimeout(() => eyes.gotoAndStop(0), 100);
-    }
-  };
-  intervalHandler("blinkingEyes", 1000, blinkingEyes, "add");
 
   //Add to screen
   scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
