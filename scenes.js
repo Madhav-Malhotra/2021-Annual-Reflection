@@ -230,10 +230,9 @@ function scene4() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/4/4.json"].spritesheet.textures;
-  const body = new PIXI.Sprite(s['Body.png']); 
-  const hill = new PIXI.Sprite(s['roundHill.png']);
-  let eyes = [new PIXI.Sprite(s['Eyes.png']), new PIXI.Sprite(s['ClosedEyes.png'])]; 
-  eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0);
+  const s3 = loader.resources["assets/3/3.json"].spritesheet.textures;
+  const hill = new PIXI.Sprite(s['Flat4.png']);
+  const body = new PIXI.Sprite(s3['Body3.png']); 
 
   //Init Text
   const poem = slideText["4"];
@@ -247,25 +246,41 @@ function scene4() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
-  person.addChild(body); person.addChild(eyes);
+  person.addChild(body);
   person.scale.x = 0.5; person.scale.y = 0.5; person.x = app.width / 3; person.y = app.height / 6; 
-  hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
+  hill.scale.x = 1.16; hill.scale.y = 1.16; hill.anchor.set(0.7, -0.5)
 
   //Create animation
   Tween.get(person, {loop: true})
     .to({y: app.height / 8}, 1500, createjs.Ease.sineInOut)
     .to({y: app.height / 6}, 1500, createjs.Ease.sineInOut)
-  const blinkingEyes = () => {
-    if (eyes.currentFrame == 0 && Math.random() > 0.6) {
-      eyes.gotoAndStop(1);
-      setTimeout(() => eyes.gotoAndStop(0), 100);
-    }
-  };
-  intervalHandler("blinkingEyes", 1000, blinkingEyes, "add");
-
+    .to({y: app.height / 8}, 1500, createjs.Ease.sineInOut)
+    .to({y: app.height / 6}, 1500, createjs.Ease.sineInOut)
+    .to({y: 400}, 800, createjs.Ease.sineIn)
+    .to({x: 400}, 3000, createjs.Ease.sineIn)
+    .to({y: 500, x: 200}, 3000, createjs.Ease.sineOut)
+    .to({y: 600, x: app.width / 3}, 200, createjs.Ease.BounceOut)
+    .wait(500)
+    .to({y: app.height / 6}, 1000, createjs.Ease.sineIn)
+    .wait(1100) //14.1
+  Tween.get(person, {loop: true})
+    .wait(4000)
+    .to({angle: -10}, 1600, createjs.Ease.sineInOut)
+    .to({angle: -40}, 1500, createjs.Ease.sineInOut)
+    .to({angle: -440}, 6000, createjs.Ease.sineInOut)
+    .wait(500)
+    .to({angle: -360}, 1500, createjs.Ease.sineInOut)
+    .wait(500) //14.1
+  Tween.get(hill, {loop: true})
+    .wait(4000)
+    .to({x: 2500}, 3000, createjs.Ease.sineIn)
+    .wait(6000)
+    .to({x: 0, y: 300}, 1, createjs.Ease.ElasticOut)
+    .to({x: 0, y: 0}, 150, createjs.Ease.ElasticOut)
+    .wait(2400) //14.1
   //Add to screen
   scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 5);
+  button.onclick = () => changeLink(slideIntervals[4], 5);
 
   app.stage.addChild(scene);
 }
