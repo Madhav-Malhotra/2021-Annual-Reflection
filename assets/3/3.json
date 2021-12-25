@@ -1,20 +1,36 @@
 {"frames": {
 
-"Body3.png":
-{
-	"frame": {"x":0,"y":0,"w":500,"h":700},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
-	"sourceSize": {"w":500,"h":700}
-},
 "Hill3.png":
 {
-	"frame": {"x":500,"y":0,"w":3500,"h":1150},
+	"frame": {"x":1,"y":1,"w":3500,"h":1145},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":3500,"h":1150},
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":5,"w":3500,"h":1145},
 	"sourceSize": {"w":3500,"h":1150}
+},
+"SideBody3.png":
+{
+	"frame": {"x":3503,"y":1,"w":232,"h":533},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":121,"y":81,"w":232,"h":533},
+	"sourceSize": {"w":500,"h":700}
+},
+"SideEye3.png":
+{
+	"frame": {"x":3537,"y":536,"w":22,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":178,"y":191,"w":22,"h":22},
+	"sourceSize": {"w":500,"h":700}
+},
+"SideEyeGlare3.png":
+{
+	"frame": {"x":3503,"y":536,"w":32,"h":27},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":179,"y":184,"w":32,"h":27},
+	"sourceSize": {"w":500,"h":700}
 }},
 "animations": {
 },
@@ -23,8 +39,8 @@
 	"version": "1.0",
 	"image": "3.png",
 	"format": "RGBA8888",
-	"size": {"w":4000,"h":1150},
+	"size": {"w":3736,"h":1147},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b92cfc9745bc9c6fa31295dd7adb761c:16f43dccc460f6e3538a02bb9b8bf4bc:4e25ec866a209ce3a44bf419a5862c0c$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c51c3d4584c6324434109b2b4da3538f:18eac16ab302404a9011e255783c92a8:4e25ec866a209ce3a44bf419a5862c0c$"
 }
 }

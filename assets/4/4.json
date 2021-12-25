@@ -1,11 +1,19 @@
 {"frames": {
 
+"DizzyEye4.png":
+{
+	"frame": {"x":2003,"y":1,"w":48,"h":42},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":166,"y":177,"w":48,"h":42},
+	"sourceSize": {"w":500,"h":700}
+},
 "Flat4.png":
 {
-	"frame": {"x":1,"y":1,"w":1998,"h":330},
+	"frame": {"x":1,"y":1,"w":2000,"h":247},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":86,"w":2000,"h":333},
+	"spriteSourceSize": {"x":0,"y":86,"w":2000,"h":247},
 	"sourceSize": {"w":2000,"h":333}
 }},
 "animations": {
@@ -15,8 +23,8 @@
 	"version": "1.0",
 	"image": "4.png",
 	"format": "RGBA8888",
-	"size": {"w":2000,"h":333},
+	"size": {"w":2046,"h":249},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:0976c2ff79840bb09eb258710ad80776:a1dfc7dd74495f9615d4bc8384d9eebb:5969e3cdce764dec8974e89b279b41c5$"
+	"smartupdate": "$TexturePacker:SmartUpdate:4fcbaec9815340241b91633fefd2f643:3dfe4c52993496b7d0ce5ef0ee872a51:5969e3cdce764dec8974e89b279b41c5$"
 }
 }

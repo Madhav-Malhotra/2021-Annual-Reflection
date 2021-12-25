@@ -76,7 +76,7 @@ function scene1() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/1/1.json"].spritesheet.textures;
-  const body = new PIXI.Sprite(s['BodyWithArms1.png']); 
+  const body = new PIXI.Sprite(s['BodyArms1.png']); 
   const hill = new PIXI.Sprite(s['roundHill1.png']);
   let eyes = [new PIXI.Sprite(s['Eyes1.png']), new PIXI.Sprite(s['ClosedEyes1.png'])]; 
   eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0);
@@ -180,8 +180,10 @@ function scene3() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/3/3.json"].spritesheet.textures;
-  const body = new PIXI.Sprite(s['Body3.png']); 
+  const body = new PIXI.Sprite(s['SideBody3.png']); 
   const hill = new PIXI.Sprite(s['Hill3.png']);
+  let eyes = [new PIXI.Sprite(s['SideEye3.png']), new PIXI.Sprite(s['SideEyeGlare3.png'])];
+  eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0); 
 
   //Init Text
   const poem = slideText["3"];
@@ -195,7 +197,7 @@ function scene3() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
-  person.addChild(body);
+  person.addChild(body); person.addChild(eyes);
   person.scale.x = 0.5; person.scale.y = 0.5; person.x = app.width / 3; person.y = app.height / 6; 
   hill.scale.x = 1/1.24; hill.scale.y = 1/1.26; hill.anchor.set(0.75,0.2);
 
@@ -218,10 +220,16 @@ function scene3() {
     .wait(350)
     .to({angle: 0}, 1600, createjs.Ease.sineOut)
     .wait(1500)
+  const glaringEyes = () => {
+    setTimeout(() => eyes.gotoAndStop(1), 500);
+    setTimeout(() => eyes.gotoAndStop(0), 3800);
+  };
+  glaringEyes();
+  intervalHandler("glaringEyes", 5300, glaringEyes, "add");
 
   //Add to screen
   scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  button.onclick = () => changeLink(slideIntervals[3], 4);
+  slideIntervals[3] = ["glaringEyes"]; button.onclick = () => changeLink(slideIntervals[3], 4);
 
   app.stage.addChild(scene);
 }
@@ -232,7 +240,9 @@ function scene4() {
   const s = loader.resources["assets/4/4.json"].spritesheet.textures;
   const s3 = loader.resources["assets/3/3.json"].spritesheet.textures;
   const hill = new PIXI.Sprite(s['Flat4.png']);
-  const body = new PIXI.Sprite(s3['Body3.png']); 
+  const body = new PIXI.Sprite(s3['SideBody3.png']); 
+  let eyes = [new PIXI.Sprite(s3['SideEye3.png']), new PIXI.Sprite(s['DizzyEye4.png'])];
+  eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0); 
 
   //Init Text
   const poem = slideText["4"];
@@ -246,9 +256,9 @@ function scene4() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
-  person.addChild(body);
+  person.addChild(body); person.addChild(eyes);
   person.scale.x = 0.5; person.scale.y = 0.5; person.x = app.width / 3; person.y = app.height / 6; 
-  hill.scale.x = 1.16; hill.scale.y = 1.16; hill.anchor.set(0.7, -0.5)
+  hill.scale.x = 1.2; hill.scale.y = 1.3; hill.anchor.set(0.7, -0.52)
 
   //Create animation
   Tween.get(person, {loop: true})
@@ -278,9 +288,16 @@ function scene4() {
     .to({x: 0, y: 300}, 1, createjs.Ease.ElasticOut)
     .to({x: 0, y: 0}, 150, createjs.Ease.ElasticOut)
     .wait(2400) //14.1
+  const dizzyEyes = () => {
+    setTimeout(() => eyes.gotoAndStop(1), 6550);
+    setTimeout(() => eyes.gotoAndStop(0), 13600);
+  };
+  dizzyEyes();
+  intervalHandler("dizzyEyes", 15600, dizzyEyes, "add");
+  
   //Add to screen
   scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  button.onclick = () => changeLink(slideIntervals[4], 5);
+  slideIntervals[4] = ["dizzyEyes"]; button.onclick = () => changeLink(slideIntervals[4], 5);
 
   app.stage.addChild(scene);
 }
@@ -289,7 +306,9 @@ function scene5() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/5/5.json"].spritesheet.textures;
-  const hill = new PIXI.Sprite(s['roundHill.png']);
+  const s4 = loader.resources["assets/4/4.json"].spritesheet.textures;
+  const base = new PIXI.Sprite(s['SideBody5.png']); const head = new PIXI.Sprite(s['Head5.png']);
+  const sadEye = new PIXI.Sprite(s['SadEye5.png']); const hill = new PIXI.Sprite(s4['Flat4.png']);
 
   //Init Text
   const poem = slideText["5"];
@@ -303,13 +322,29 @@ function scene5() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
-  hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
+  head.addChild(sadEye); person.addChild(head); person.addChild(base);
+  person.scale.x = 0.5; person.scale.y = 0.5; person.x = app.width / 1.05; person.y = app.height / 6; 
+  hill.scale.x = 1.2; hill.scale.y = 1.2; hill.anchor.set(0.7, -0.7)
 
   //Create animation
+  Tween.get(person, {loop: true})
+    .to({y: app.height / 8}, 1500, createjs.Ease.sineInOut)
+    .to({y: app.height / 6}, 1500, createjs.Ease.sineInOut)
+    .to({y: app.height / 8}, 1500, createjs.Ease.sineInOut)
+    .to({y: app.height / 6}, 1500, createjs.Ease.sineInOut)
+  Tween.get(person, {loop: true})
+    .to({x: app.height / 3}, 8000, createjs.Ease.sineInOut)
+    .wait(8000)
+    .to({x: -170}, 8000, createjs.Ease.sineInOut)
+  Tween.get(head, {loop: true})
+    .wait(8000)
+    .to({angle: 20, x: 110, y: -50}, 4000, createjs.Ease.sineInOut)
+    .to({angle: 0, x: 0, y: 0}, 4000, createjs.Ease.sineInOut)
+    .wait(8000)
 
   //Add to screen
-  scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 6);
+  scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
+  button.onclick = () => changeLink(slideIntervals[5], 6);
 
   app.stage.addChild(scene);
 }
@@ -318,7 +353,7 @@ function scene6() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/6/6.json"].spritesheet.textures;
-  const hill = new PIXI.Sprite(s['roundHill.png']);
+  const hill = new PIXI.Sprite(s['roundHill.png'])
 
   //Init Text
   const poem = slideText["6"];
