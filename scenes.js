@@ -202,8 +202,8 @@ function scene3() {
   //Create animation
   Tween.get(hill, {loop: true})
     .wait(500)
-    .to({x: 500, y: -20}, 1000, createjs.Ease.sineIn)
-    .to({x: 1000, y: 400}, 700)
+    .to({x: 500, y: -50}, 1000, createjs.Ease.sineIn)
+    .to({x: 1000, y: 450}, 700)
     .to({x: 1932, y: 613}, 1600, createjs.Ease.sineOut)
     .call(() => {
       Tween.get(person)
@@ -213,8 +213,9 @@ function scene3() {
     .wait(1500)
   Tween.get(person, {loop: true})
     .wait(500)
-    .to({angle: -10}, 1000, createjs.Ease.sineIn)
-    .to({angle: 20}, 700, createjs.Ease.ExponentialOut)
+    .to({angle: -10}, 1000, createjs.Ease.sineInOut)
+    .to({angle: 20}, 350, createjs.Ease.sineInOut)
+    .wait(350)
     .to({angle: 0}, 1600, createjs.Ease.sineOut)
     .wait(1500)
 

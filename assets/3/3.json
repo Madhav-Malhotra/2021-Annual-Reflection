@@ -10,11 +10,11 @@
 },
 "Hill3.png":
 {
-	"frame": {"x":500,"y":0,"w":3500,"h":1050},
+	"frame": {"x":500,"y":0,"w":3500,"h":1150},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":3500,"h":1050},
-	"sourceSize": {"w":3500,"h":1050}
+	"spriteSourceSize": {"x":0,"y":0,"w":3500,"h":1150},
+	"sourceSize": {"w":3500,"h":1150}
 }},
 "animations": {
 },
@@ -23,8 +23,8 @@
 	"version": "1.0",
 	"image": "3.png",
 	"format": "RGBA8888",
-	"size": {"w":4000,"h":1050},
+	"size": {"w":4000,"h":1150},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:ee02d250e97fc1a40350432ba2a383be:dc10ba23e59b087462fd4c9d91e700fe:4e25ec866a209ce3a44bf419a5862c0c$"
+	"smartupdate": "$TexturePacker:SmartUpdate:08ada6c7bc7e3c0822e05a3ff8494877:bd3bc966e19565c14dbdf1c8f2d994eb:4e25ec866a209ce3a44bf419a5862c0c$"
 }
 }
