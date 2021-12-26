@@ -11,6 +11,7 @@ Ticker.framerate = 60;
 // ================================ CHANGE SLIDES ================================
 function slidesChange(intervals, slideNum) {
   for (i of intervals) { intervalHandler(i, null, null, "remove"); }
+  for (c of app.stage.children) {Tween.removeTweens(c)};
   app.stage.removeChildren(); left.innerHTML = "";
   const sceneLoad = slides[slideNum];
   const pos = `assets/${slideNum}/${slideNum}.json`;
