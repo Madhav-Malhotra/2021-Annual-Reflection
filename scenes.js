@@ -47,7 +47,7 @@ const slideText = {
   "3": ["We are all walking a journey.","To a destination we do not know.","We cannot know for we have never been.","","The sky's fire in a sunrise.","The open landscape amidst a clearing of trees.","Don't wait to appreciate beauty when it comes.","Just don't wait.","","Thinking is easy.","Believing is the hard part.","","The road still carries on."],
   "4": ["We are all borne to the human hardship","That joy becomes struggle;","And struggle becomes joy.","","Yet they were never anything but entwined.","","What difference in the loss of peace and the loss of war?","Suffering is human, whether in wartime or peace.","","We all trek the hills of struggle and joy.","Weaving invisible, intractable, incomprehensible tracks.","Inevitably, the ground disappears beneath our feet.","","The road still carries on."],
   "5": ["Sink down lower.","Let the waves crash and rise.","","I see but I do not look.","I look but I do not see.","","The universe is an ashen barrens.","","How low can I go?","How long till there is light?","","The road still carries on."],
-  "6": ["I fight up the hill.","","Though it is hot;","Though I do not like it;","Though I do not know why I started;","Nor what I will see when I get up there.","","I reach the top.","","Great the journey, little the gain.","Atop the hill: an unlit torch.","A silent beacon on the hill.","","Light the torch.","","The road still carries on."],
+  "6": ["I fight up the hill.","","Though it is hot;","Though I do not like it;","Though I do not know why I started;","Nor what I will see when I get up there.","","I reach the top.","","Great the journey, little the gain.","Atop the hill: an unlit torch.","A silent beacon on the hill.","","Light the torch.",],
   "7": ["Lights come and go,","But the darkness is constant.","Darkness is one;","It's the light that has distinctions.","","Look in the mirror;","But the reflection is not my own.","Look down to my hands;","See the monster I have been.","","But truth be told,","There is nothing separating light and darkness,","But the strain in our eyes.","","The road still carries on."],
   "8": ["We search 'out there' for meaning.","Something to fill the emptiness.","Yet the truth is this:","There is no meaning to be found 'out there'.","","No matter how we chase the fog,","when we're in the fog it eludes us.","No matter how we admire the frost,","when we touch the frost it fades.","","Some things, we may only appreciate from afar.","The beauty of things in the end,","is the very fact they do not last.","","The road still carries on."],
   "9": ["Our artificial boundaries in the sand","Are ever-fading in the tempest of life.","","In truth, all is connected. ","","The greeting of the breeze on my face","Takes and brings my warmth.","The grass on which I step","Is shaped by the footprints I leave.","The sun's rays and human smiles","Brighten my face just as theirs.","","The road still carries on."],
@@ -353,7 +353,15 @@ function scene6() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/6/6.json"].spritesheet.textures;
-  const hill = new PIXI.Sprite(s['roundHill.png'])
+  const s1 = loader.resources["assets/1/1.json"].spritesheet.textures;
+  const hill = new PIXI.Sprite(s1['roundHill1.png']);
+  const stone = new PIXI.Sprite(s["Stone6.png"]); const stone2 = new PIXI.Sprite(s["Stone6.png"])
+  const leftArm = new PIXI.Sprite(s["LeftArm6.png"]); const rightArm = new PIXI.Sprite(s["RightArm6.png"]);
+  const base = new PIXI.Sprite(s["BodyAndHead6.png"]); const stick = new PIXI.Sprite(s["Stick6.png"]);
+  let fire = new PIXI.Texture.from("assets/6/FlameBG.mp4");
+  fire.baseTexture.resource.source.loop = true; fire = new PIXI.Sprite(fire);
+  let eyes = [new PIXI.Sprite(s['Eyes6.png']), new PIXI.Sprite(s['ClosedEyes6.png'])];
+  eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0); 
 
   //Init Text
   const poem = slideText["6"];
@@ -364,16 +372,51 @@ function scene6() {
     left.appendChild(p)
   }
   const button = document.createElement("button"); button.innerText = poem[poem.length - 1]; 
-  button.className = "poetic"; left.appendChild(button);
+  button.className = "poetic"; button.id = "light-button"; left.appendChild(button);
 
   //Size
-  hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
+  person.scale.x = 1/2.8; person.scale.y = 1/2.8; person.x = app.width / 2.3; person.y = app.height / 2.7; 
+  hill.scale.x = 1/1.24; hill.scale.y = 1/1.2;
+  fire.scale.x = 1/1.7; fire.scale.y = 1/1.7; fire.anchor.set(-0.6, -0.88);
+  stick.scale.x = 1/4.7; stick.scale.y = 1/4.7; stick.x = 330; stick.y = 390;
+  stone.scale.set(1/2.2, 1/2.2); stone.anchor.set(0,-1.7); stone2.scale.set(1/2.2, 1/2.2); stone2.anchor.set(-0.1,-2.4);
+
 
   //Create animation
+  Tween.get(person, {loop: true})
+    .to({y: app.height / 2.6}, 1500, createjs.Ease.sineInOut)
+    .to({y: app.height / 2.7}, 1500, createjs.Ease.sineInOut)
+  const blinkingEyes = () => {
+    if (eyes.currentFrame == 0 && Math.random() > 0.6) {
+      eyes.gotoAndStop(1);
+      setTimeout(() => eyes.gotoAndStop(0), 100);
+    }
+  };
+  intervalHandler("blinkingEyes", 1000, blinkingEyes, "add");
+
+  function light() {
+    const button = document.getElementById("light-button"); button.innerText = "The road still carries on."
+    button.onclick = () => changeLink(slideIntervals[6], 7);
+    Tween.get(leftArm)
+      .to({angle: 10, x: 80, y: -50}, 500, createjs.Ease.sineIn)
+      .to({angle: 0, x: 0, y: 0}, 100)
+      .call(() => {
+        scene.removeChildren();
+        scene.addChild(fire); scene.addChild(hill); scene.addChild(person);
+      });
+    Tween.get(rightArm)
+      .to({angle: -10, x: -80, y: 50}, 500, createjs.Ease.sineIn)
+      .to({angle: 0, x: 0, y: 0}, 100)
+    Tween.get(person)
+      .wait(500)
+      .to({x: app.width / 1.3, angle: 20}, 600, createjs.Ease.sineInOut) 
+  }
 
   //Add to screen
-  scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 7);
+  rightArm.addChild(stone); person.addChild(rightArm); person.addChild(base); 
+  leftArm.addChild(stone2); person.addChild(leftArm); person.addChild(eyes);
+  scene.addChild(stick); scene.addChild(hill); scene.addChild(person); //addChild for PIXI.js el. appendChild for DOM el
+  slideIntervals[6] = ["blinkingEyes"]; button.onclick = light;
 
   app.stage.addChild(scene);
 }

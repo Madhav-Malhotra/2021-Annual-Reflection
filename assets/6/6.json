@@ -1,44 +1,68 @@
 {"frames": {
 
-"Body.png":
+"BodyAndHead6.png":
 {
-	"frame": {"x":0,"y":0,"w":500,"h":700},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
+	"frame": {"x":1,"y":1,"w":272,"h":521},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":121,"y":81,"w":272,"h":521},
 	"sourceSize": {"w":500,"h":700}
 },
-"ClosedEyes.png":
+"ClosedEyes6.png":
 {
-	"frame": {"x":500,"y":0,"w":500,"h":700},
+	"frame": {"x":429,"y":357,"w":92,"h":35},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
+	"trimmed": true,
+	"spriteSourceSize": {"x":161,"y":205,"w":92,"h":35},
 	"sourceSize": {"w":500,"h":700}
 },
-"Eyes.png":
+"Eyes6.png":
 {
-	"frame": {"x":0,"y":700,"w":500,"h":700},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
+	"frame": {"x":429,"y":275,"w":80,"h":36},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":167,"y":205,"w":80,"h":36},
 	"sourceSize": {"w":500,"h":700}
 },
-"roundHill.png":
+"LeftArm6.png":
 {
-	"frame": {"x":500,"y":700,"w":873,"h":782},
+	"frame": {"x":245,"y":275,"w":182,"h":130},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":873,"h":782},
-	"sourceSize": {"w":873,"h":782}
+	"trimmed": true,
+	"spriteSourceSize": {"x":111,"y":415,"w":182,"h":130},
+	"sourceSize": {"w":500,"h":700}
+},
+"RightArm6.png":
+{
+	"frame": {"x":245,"y":407,"w":204,"h":51},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":375,"w":204,"h":51},
+	"sourceSize": {"w":500,"h":700}
+},
+"Stick6.png":
+{
+	"frame": {"x":524,"y":1,"w":70,"h":462},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":58,"y":90,"w":70,"h":462},
+	"sourceSize": {"w":250,"h":600}
+},
+"Stone6.png":
+{
+	"frame": {"x":1,"y":275,"w":242,"h":192},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":58,"y":123,"w":242,"h":192},
+	"sourceSize": {"w":400,"h":400}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "6.png",
 	"format": "RGBA8888",
-	"size": {"w":1373,"h":1482},
+	"size": {"w":595,"h":468},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:f87f23b00c6d9d315163af7aa5edde4e:c4a362a6939011366e8ebf2df4b161e1:f91cade670d3cd0da3efe30dce0ef325$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ae46c5e4ae1442cbed4318dd3dc5c679:b6ce12090d600fdd0b08f8a62fde95c2:dbe324ba66a3905eeac58a8d5e17d3a8$"
 }
 }
