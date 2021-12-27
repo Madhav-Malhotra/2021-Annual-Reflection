@@ -1,35 +1,11 @@
 {"frames": {
 
-"Body.png":
+"HillTrail7.png":
 {
-	"frame": {"x":0,"y":0,"w":500,"h":700},
+	"frame": {"x":1,"y":1,"w":757,"h":668},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
-	"sourceSize": {"w":500,"h":700}
-},
-"ClosedEyes.png":
-{
-	"frame": {"x":500,"y":0,"w":500,"h":700},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
-	"sourceSize": {"w":500,"h":700}
-},
-"Eyes.png":
-{
-	"frame": {"x":0,"y":700,"w":500,"h":700},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":500,"h":700},
-	"sourceSize": {"w":500,"h":700}
-},
-"roundHill.png":
-{
-	"frame": {"x":500,"y":700,"w":873,"h":782},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":873,"h":782},
+	"trimmed": true,
+	"spriteSourceSize": {"x":116,"y":31,"w":757,"h":668},
 	"sourceSize": {"w":873,"h":782}
 }},
 "meta": {
@@ -37,8 +13,8 @@
 	"version": "1.0",
 	"image": "7.png",
 	"format": "RGBA8888",
-	"size": {"w":1373,"h":1482},
+	"size": {"w":759,"h":670},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:f87f23b00c6d9d315163af7aa5edde4e:c4a362a6939011366e8ebf2df4b161e1:f91cade670d3cd0da3efe30dce0ef325$"
+	"smartupdate": "$TexturePacker:SmartUpdate:16594698cc2abaf64b563c780cc0243f:4f310c91c19e937ff086bd8f1eb19409:65ea2a8a663e8b251aa72bcc445331fa$"
 }
 }
