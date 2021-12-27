@@ -28,8 +28,8 @@ div.row > div {
 
 div.row > div#left {
   padding-left: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   padding-right: 20px;
   overflow-y: auto;
 }
@@ -89,6 +89,25 @@ div#left > button.poetic {
 
 div#left > button.poetic:hover {
   border: solid 2px white;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.7);
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0);
+  border: dashed 2px white;
+  border-radius: 10px;
 }
 
 /* ===================== FONTS ===================== */
