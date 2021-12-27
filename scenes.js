@@ -611,7 +611,20 @@ function scene9() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/9/9.json"].spritesheet.textures;
-  const hill = new PIXI.Sprite(s['roundHill.png']);
+  const s1 = loader.resources["assets/1/1.json"].spritesheet.textures;
+  const s2 = loader.resources["assets/2/2.json"].spritesheet.textures;
+
+  const hill = new PIXI.Sprite(s1['roundHill1.png']); const base = new PIXI.Sprite(s2["Body2.png"]);
+  const rightArm = new PIXI.Sprite(s["RightArm9.png"]); const leftArm = new PIXI.Sprite(s["LeftArm9.png"]);
+  let eyes = [new PIXI.Sprite(s1["Eyes1.png"]), new PIXI.Sprite(s2["SmilingEyes2.png"])];
+  eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0);
+  let wind = [];
+  for (let i = 0; i < 31; i++) {
+    j = i.toString();
+    do { j = "0" + j } while (j.length < 4)
+    wind.push(new PIXI.Sprite(s[`wind${j}.png`]));
+  }
+  wind = new PIXI.AnimatedSprite(wind); wind.gotoAndStop(31);
 
   //Init Text
   const poem = slideText["9"];
@@ -625,13 +638,36 @@ function scene9() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
-  hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
+  person.addChild(base, leftArm, rightArm, eyes);
+  leftArm.position.set(-10,-15); rightArm.position.set(-10,10);
+  wind.y = -30;
+  person.scale.x = 0.5; person.scale.y = 0.5; person.x = 205; person.y = 200; person.angle = -20;
+  hill.scale.x = 1/1.24; hill.scale.y = 1/1.26; hill.y = app.height / 20;
 
   //Create animation
+  Tween.get(person, {loop: true})
+    .to({y: 220}, 1500, createjs.Ease.sineInOut)
+    .to({y: 200}, 1500, createjs.Ease.sineInOut)
+  const windRepeat = () => {
+    let i = 0;
+    wind.angle = Math.random() * 10;
+    const windPlay = () => {
+      wind.gotoAndStop(i);
+      i++
+      if (i == 32) {
+        intervalHandler("windPlay", null, null, "remove");
+      }
+    }
+    intervalHandler("windPlay", 42, windPlay, "add");
+    setTimeout(() => eyes.gotoAndStop(1), 750);
+    setTimeout(() => eyes.gotoAndStop(0), 1750);
+  };
+  windRepeat();
+  intervalHandler("windRepeat", 3000, windRepeat, "add");
 
   //Add to screen
-  scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 10);
+  scene.addChild(hill); scene.addChild(person); scene.addChild(wind); //addChild for PIXI.js el. appendChild for DOM el
+  slideIntervals[9] = ["windPlay", "windRepeat"]; button.onclick = () => changeLink(slideIntervals[9], 10);
 
   app.stage.addChild(scene);
 }
