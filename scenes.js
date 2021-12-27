@@ -525,7 +525,15 @@ function scene8() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/8/8.json"].spritesheet.textures;
-  const hill = new PIXI.Sprite(s['roundHill.png']);
+  const s1 = loader.resources["assets/1/1.json"].spritesheet.textures;
+  const s2 = loader.resources["assets/2/2.json"].spritesheet.textures;
+  const s4 = loader.resources["assets/4/4.json"].spritesheet.textures;
+
+  const snow = new PIXI.Sprite(s['Snow8.png']); const hill = new PIXI.Sprite(s4["Flat4.png"]);
+  const body = new PIXI.Sprite(s2['Body2.png']);  
+  const leftArm = new PIXI.Sprite(s['LeftArm8.png']); const rightArm = new PIXI.Sprite(s['RightArm8.png']);
+  let eyes = [new PIXI.Sprite(s1['Eyes1.png']), new PIXI.Sprite(s2['SmilingEyes2.png'])];
+  eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0);  
 
   //Init Text
   const poem = slideText["8"];
@@ -539,12 +547,61 @@ function scene8() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
-  hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
+  hill.scale.x = 1.2; hill.scale.y = 1.2; hill.anchor.set(0.7, -0.7);
+  snow.scale.set(0.3,0.3); snow.position.set(250,-20);
+  person.addChild(body); person.addChild(eyes); person.addChild(leftArm); person.addChild(rightArm);
+  leftArm.pivot.set(1,0); leftArm.position.set(117,370); rightArm.position.set(300,385);
+  person.scale.x = 0.5; person.scale.y = 0.5; person.x = app.width / 3; person.y = app.height / 4.8; 
 
   //Create animation
+  Tween.get(person, {loop: true})
+    .wait(4300)
+    .to({y: app.height / 6}, 1500, createjs.Ease.sineInOut)
+    .to({y: app.height / 4.8}, 1500, createjs.Ease.sineInOut)
+    .wait(4300)
+  Tween.get(snow, {loop: true})
+    .to({x: 210}, 700, createjs.Ease.BackIn).to({x: 250}, 700, createjs.Ease.BackOut)
+    .to({x: 210}, 700, createjs.Ease.BackIn).to({x: 250}, 700, createjs.Ease.BackOut)
+    .to({x: 210}, 700, createjs.Ease.BackIn).to({x: 250}, 700, createjs.Ease.BackOut)
+    .wait(100).to({x: 440}, 0).wait(3000)
+    .to({x: 480}, 700, createjs.Ease.BackIn).to({x: 440}, 700, createjs.Ease.BackOut)
+    .to({x: 480}, 700, createjs.Ease.BackIn).to({x: 440}, 700, createjs.Ease.BackOut)
+    .to({x: 480}, 700, createjs.Ease.BackIn).to({x: 440}, 700, createjs.Ease.BackOut)
+    .wait(3100)
+  Tween.get(snow, {loop: true})
+    .to({y: 50}, 700, createjs.Ease.BackIn).to({y: 100}, 700, createjs.Ease.BackOut)
+    .to({y: 150}, 700, createjs.Ease.BackIn).to({y: 200}, 700, createjs.Ease.BackOut)
+    .call(() => {
+      Tween.get(leftArm)
+        .to({angle: 90, y: 320, x: 170}, 1500, createjs.Ease.sineInOut)
+        .wait(1000)
+        .to({angle: 0, y: 370, x: 117}, 1500, createjs.Ease.sineInOut)
+    })
+    .to({y: 250}, 700, createjs.Ease.BackIn).to({y: 295}, 700, createjs.Ease.BackOut)
+    .call(() => {
+      eyes.gotoAndStop(1);
+      setTimeout(() => eyes.gotoAndStop(0), 1500)
+    })
+    .to({alpha: 0}, 100)
+    .to({y: -20, alpha: 1}, 0).wait(3000)
+    .to({y: 50}, 700, createjs.Ease.BackIn).to({y: 100}, 700, createjs.Ease.BackOut)
+    .to({y: 150}, 700, createjs.Ease.BackIn).to({y: 200}, 700, createjs.Ease.BackOut)
+    .call(() => {
+      Tween.get(rightArm)
+      .to({angle: -90}, 1500, createjs.Ease.sineInOut)
+      .wait(1000)
+      .to({angle: 0}, 1500, createjs.Ease.sineInOut)
+    })
+    .to({y: 250}, 700, createjs.Ease.BackIn).to({y: 290}, 700, createjs.Ease.BackOut)
+    .call(() => {
+      eyes.gotoAndStop(1);
+      setTimeout(() => eyes.gotoAndStop(0), 1500)
+    })
+    .to({alpha: 0}, 100)
+    .wait(3000);
 
   //Add to screen
-  scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
+  scene.addChild(hill); scene.addChild(person); scene.addChild(snow); //addChild for PIXI.js el. appendChild for DOM el
   cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 9);
 
   app.stage.addChild(scene);
