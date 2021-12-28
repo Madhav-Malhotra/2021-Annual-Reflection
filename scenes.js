@@ -722,8 +722,8 @@ function scene11() {
 
   const trace = new PIXI.Sprite(s["Trace11.png"]); const hill = new PIXI.Sprite(s4["Flat4.png"]);
   const blockLeft = new PIXI.Sprite(s["Block11.png"]); const blockRight = new PIXI.Sprite(s["Block11.png"]);
-  const body = new PIXI.Sprite(s2['Body2.png']); const eyes = new PIXI.Sprite(s2['SmilingEyes2.png']);
-  const leftArm = new PIXI.Sprite(s['LeftArm8.png']); const rightArm = new PIXI.Sprite(s['RightArm8.png']);
+  const base = new PIXI.Sprite(s2['Body2.png']); const eyes = new PIXI.Sprite(s2['SmilingEyes2.png']);
+  const leftArm = new PIXI.Sprite(s8['LeftArm8.png']); const rightArm = new PIXI.Sprite(s8['RightArm8.png']);
 
   //Init Text
   const poem = slideText["11"];
@@ -737,11 +737,29 @@ function scene11() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
+  hill.position.set(-1300,250); hill.scale.y = 1.25;
+  person.addChild(base, eyes, leftArm, rightArm);
+  leftArm.pivot.set(1,0); leftArm.angle = 110; leftArm.position.set(195,330); 
+  rightArm.angle = -10; rightArm.position.set(298,385);
+  person.scale.x = 0.5; person.scale.y = 0.5; person.x = app.width / 6.5; person.y = app.height / 5.8;
+  trace.position.set(-875, 280); trace.scale.y = -0.6; 
+  blockLeft.position.set(-540, 0); blockRight.scale.x = -1; blockRight.position.set(1200, 0);
 
   //Create animation
+  Tween.get(trace, {loop: true})
+    .call(() => {
+      Tween.removeTweens(person);
+      person.y = app.height / 5.8;
+      Tween.get(person, {loop: true})
+        .to({y: 40}, 2600, createjs.Ease.sineInOut)
+        .to({y: app.height / 5.8}, 2600, createjs.Ease.sineInOut)
+    })
+    .to({x: 0}, 29700)
+  Tween.get(hill, {loop: true})
+    .to({x: 0}, 29700)
 
   //Add to screen
-  scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
+  scene.addChild(trace, blockLeft, blockRight, hill, person); //addChild for PIXI.js el. appendChild for DOM el
   cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 12);
 
   app.stage.addChild(scene);
