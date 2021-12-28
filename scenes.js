@@ -14,9 +14,11 @@ function slidesChange(intervals, slideNum) {
   for (c of app.stage.children) {Tween.removeTweens(c)};
   app.stage.removeChildren(); left.innerHTML = "";
   const sceneLoad = slides[slideNum];
-  const pos = `assets/${slideNum}/${slideNum}.json`;
-  if (!loader.resources[pos]) loader.add(pos).load(sceneLoad);
-  else sceneLoad();
+  for (let i = 1; i <= slideNum; i++) {
+    const pos = `assets/${i}/${i}.json`;
+    if (!loader.resources[pos] && i != slideNum) loader.add(pos);
+    else if (!loader.resources[pos] && i == slideNum) loader.add(pos).load(sceneLoad);
+  };
 }
 
 function changeLink(intervals, i) {
@@ -714,7 +716,14 @@ function scene11() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/11/11.json"].spritesheet.textures;
-  const hill = new PIXI.Sprite(s['roundHill.png']);
+  const s2 = loader.resources["assets/2/2.json"].spritesheet.textures;
+  const s8 = loader.resources["assets/8/8.json"].spritesheet.textures;
+  const s4 = loader.resources["assets/4/4.json"].spritesheet.textures;
+
+  const trace = new PIXI.Sprite(s["Trace11.png"]); const hill = new PIXI.Sprite(s4["Flat4.png"]);
+  const blockLeft = new PIXI.Sprite(s["Block11.png"]); const blockRight = new PIXI.Sprite(s["Block11.png"]);
+  const body = new PIXI.Sprite(s2['Body2.png']); const eyes = new PIXI.Sprite(s2['SmilingEyes2.png']);
+  const leftArm = new PIXI.Sprite(s['LeftArm8.png']); const rightArm = new PIXI.Sprite(s['RightArm8.png']);
 
   //Init Text
   const poem = slideText["11"];
@@ -728,7 +737,6 @@ function scene11() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
-  hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
 
   //Create animation
 
