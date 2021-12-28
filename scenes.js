@@ -676,7 +676,9 @@ function scene10() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/10/10.json"].spritesheet.textures;
-  const hill = new PIXI.Sprite(s['roundHill.png']);
+  const ashes = new PIXI.Sprite(s["Ashes10.png"]);
+  let fire = new PIXI.Texture.from("assets/10/fire.mp4");
+  fire.baseTexture.resource.source.loop = true; fire = new PIXI.Sprite(fire);
 
   //Init Text
   const poem = slideText["10"];
@@ -690,13 +692,20 @@ function scene10() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
-  hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
+  fire.scale.set(0.7, 0.7); ashes.scale.set(0.7, 0.7);
+  fire.anchor.set(-0.21, -0.24); ashes.anchor.set(-0.21, -0.24);
+  fire.alpha = 0;
 
   //Create animation
+  Tween.get(fire, {loop: true})
+    .wait(1000)
+    .to({alpha: 1}, 3000, createjs.Ease.sineInOut)
+    .wait(3000)
+    .to({alpha: 0}, 3000, createjs.Ease.sineInOut)
 
   //Add to screen
-  scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 11);
+  scene.addChild(ashes, fire); //addChild for PIXI.js el. appendChild for DOM el
+  slideIntervals[10] = ["firePlay10"]; button.onclick = () => changeLink(slideIntervals[10], 11);
 
   app.stage.addChild(scene);
 }
