@@ -9,8 +9,8 @@ const Tween = createjs.Tween;
 const Ticker = createjs.Ticker;
 Ticker.framerate = 60;
 // ================================ CHANGE SLIDES ================================
-function slidesChange(intervals, slideNum) {
-  for (i of intervals) { intervalHandler(i, null, null, "remove"); }
+function slidesChange(slideNum) {
+  clearIntervals("remove");
   for (c of app.stage.children) {Tween.removeTweens(c)};
   app.stage.removeChildren(); left.innerHTML = "";
   const sceneLoad = slides[slideNum];
@@ -21,13 +21,13 @@ function slidesChange(intervals, slideNum) {
   };
 }
 
-function changeLink(intervals, i) {
+function changeLink(i) {
   const nav = document.querySelector("div.menu");
   for (let j = 0; j < 12; j++) {
     if (j+1 != i) nav.children[j].className = "";
     else nav.children[j].className = "active";
   }
-  slidesChange(intervals, i);
+  slidesChange(i);
 }
 
 const slides = {
@@ -57,21 +57,6 @@ const slideText = {
   "10": ["We are like fire.","From dust we came;","And to dust we shall return.","Yet the transient spark in the middle is noble.","","In a way only we can understand.","In a way only we can celebrate.","In a way only we can be.","","I am proud to listen to the human.","Not in her divinity,","But in her imperfect growth.","","The road still carries on."],
   "11": ["My story may not have had a happy beginning.","Yet it is not the beginning that defines a story.","","Art is to choose to create;","Knowing full well its lack of meaning;","And its inevitable demise.","","The excitement of creativity,","The pull of curiosity,","The relief of humour,","The awe of nature,","The compassion of giving.","","There are things that can block the meaningless of life.","","To live is to create meaning.","To live is art.","","The road still carries on."],
   "12": ["Just as I am within the universe.","The universe is within me.","There is no world","But the world I choose to see.","","I am the source of darkness.","I am the source of light.","I am the lighter of torches.","The only citadel in night.","","Be not master of my fate","I am captain of my soul.","","The road still carries on."],
-}
-
-const slideIntervals = {
-  "1": [],
-  "2": [],
-  "3": [],
-  "4": [],
-  "5": [],
-  "6": [],
-  "7": [],
-  "8": [],
-  "9": [],
-  "10": [],
-  "11": [],
-  "12": [],
 }
 
 // ================================ SCENES ================================
@@ -105,12 +90,12 @@ function scene1() {
       setTimeout(() => eyes.gotoAndStop(0), 100);
     }
   };
-  intervalHandler("blinkingEyes", 1000, blinkingEyes, "add");
+  addInterval("blinkingEyes", 1000, blinkingEyes);
 
   //Add to screen
   scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
   left.appendChild(title); left.appendChild(text); left.appendChild(button);
-  slideIntervals["1"] = ["blinkingEyes"]; button.onclick = () => changeLink(slideIntervals[1], 2);
+  button.onclick = () => changeLink(2);
 
   app.stage.addChild(scene);
 }
@@ -169,12 +154,12 @@ function scene2() {
       .to({angle: -88, x: app.width / 2.3}, 1200, createjs.Ease.sineInOut)
     }
   };
-  intervalHandler("eyesAndRock", 2500, eyesAndRock, "add");
+  addInterval("eyesAndRock", 2500, eyesAndRock);
 
   //Add to screen
   scene.addChild(person); //addChild for PIXI.js el. appendChild for DOM el
   scene.addChild(child);
-  slideIntervals[2] = ["eyesAndRock"]; button.onclick = () => changeLink(slideIntervals[2], 3);
+  button.onclick = () => changeLink(3);
 
   app.stage.addChild(scene);
 }
@@ -228,11 +213,11 @@ function scene3() {
     setTimeout(() => eyes.gotoAndStop(0), 3800);
   };
   glaringEyes();
-  intervalHandler("glaringEyes", 5300, glaringEyes, "add");
+  addInterval("glaringEyes", 5300, glaringEyes);
 
   //Add to screen
   scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  slideIntervals[3] = ["glaringEyes"]; button.onclick = () => changeLink(slideIntervals[3], 4);
+  button.onclick = () => changeLink(4);
 
   app.stage.addChild(scene);
 }
@@ -296,11 +281,11 @@ function scene4() {
     setTimeout(() => eyes.gotoAndStop(0), 13600);
   };
   dizzyEyes();
-  intervalHandler("dizzyEyes", 15600, dizzyEyes, "add");
+  addInterval("dizzyEyes", 15600, dizzyEyes);
   
   //Add to screen
   scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  slideIntervals[4] = ["dizzyEyes"]; button.onclick = () => changeLink(slideIntervals[4], 5);
+  button.onclick = () => changeLink(5);
 
   app.stage.addChild(scene);
 }
@@ -347,7 +332,7 @@ function scene5() {
 
   //Add to screen
   scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  button.onclick = () => changeLink(slideIntervals[5], 6);
+  button.onclick = () => changeLink(6);
 
   app.stage.addChild(scene);
 }
@@ -394,11 +379,11 @@ function scene6() {
       setTimeout(() => eyes.gotoAndStop(0), 100);
     }
   };
-  intervalHandler("blinkingEyes", 1000, blinkingEyes, "add");
+  addInterval("blinkingEyes", 1000, blinkingEyes);
 
   function light() {
     const button = document.getElementById("light-button"); button.innerText = "The road still carries on."
-    button.onclick = () => changeLink(slideIntervals[6], 7);
+    button.onclick = () => changeLink(7);
     let fireInterval
     Tween.get(leftArm)
       .to({angle: 10, x: 80, y: -50}, 500, createjs.Ease.sineIn)
@@ -412,7 +397,7 @@ function scene6() {
           i++
           if (i == 40) i = 0;
         };
-        intervalHandler("firePlay", 42, fireInterval, "add");
+        addInterval("firePlay", 42, fireInterval);
       });
     Tween.get(rightArm)
       .to({angle: -10, x: -80, y: 50}, 500, createjs.Ease.sineIn)
@@ -426,7 +411,7 @@ function scene6() {
   rightArm.addChild(stone); person.addChild(rightArm); person.addChild(base); 
   leftArm.addChild(stone2); person.addChild(leftArm); person.addChild(eyes);
   scene.addChild(stick); scene.addChild(hill); scene.addChild(person); //addChild for PIXI.js el. appendChild for DOM el
-  slideIntervals[6] = ["blinkingEyes", "firePlay"]; button.onclick = light;
+  button.onclick = light;
 
   app.stage.addChild(scene);
 }
@@ -493,18 +478,18 @@ function scene7() {
       setTimeout(() => eyes.gotoAndStop(0), 100);
     }
   };
-  intervalHandler("blinkingEyes", 1000, blinkingEyes, "add");
+  addInterval("blinkingEyes", 1000, blinkingEyes);
   let i = 0;
   const firePlay = () => {
     for (f of fires) {f.children[1].gotoAndStop(i)}
     i++
     if (i == 40) i = 0;
   }
-  intervalHandler("firePlay", 42, firePlay, "add");
+  addInterval("firePlay", 42, firePlay);
 
   //Add to screen
   scene.addChild(bg); scene.addChild(fg); //addChild for PIXI.js el. appendChild for DOM el
-  slideIntervals[7] = ["blinkingEyes", "firePlay"]; button.onclick = () => changeLink(slideIntervals[7], 8);
+  button.onclick = () => changeLink(8);
 
   app.stage.addChild(scene);
 }
@@ -590,7 +575,7 @@ function scene8() {
 
   //Add to screen
   scene.addChild(hill); scene.addChild(person); scene.addChild(snow); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 9);
+  button.onclick = () => changeLink(9);
 
   app.stage.addChild(scene);
 }
@@ -643,19 +628,19 @@ function scene9() {
       wind.gotoAndStop(i);
       i++
       if (i == 32) {
-        intervalHandler("windPlay", null, null, "remove");
+        removeSpecific("windPlay");
       }
     }
-    intervalHandler("windPlay", 42, windPlay, "add");
+    addInterval("windPlay", 42, windPlay);
     setTimeout(() => eyes.gotoAndStop(1), 750);
     setTimeout(() => eyes.gotoAndStop(0), 1750);
   };
   windRepeat();
-  intervalHandler("windRepeat", 3000, windRepeat, "add");
+  addInterval("windRepeat", 3000, windRepeat);
 
   //Add to screen
   scene.addChild(hill); scene.addChild(person); scene.addChild(wind); //addChild for PIXI.js el. appendChild for DOM el
-  slideIntervals[9] = ["windPlay", "windRepeat"]; button.onclick = () => changeLink(slideIntervals[9], 10);
+  button.onclick = () => changeLink(10);
 
   app.stage.addChild(scene);
 }
@@ -693,7 +678,7 @@ function scene10() {
 
   //Add to screen
   scene.addChild(ashes, fire); //addChild for PIXI.js el. appendChild for DOM el
-  slideIntervals[10] = ["firePlay10"]; button.onclick = () => changeLink(slideIntervals[10], 11);
+  button.onclick = () => changeLink(11);
 
   app.stage.addChild(scene);
 }
@@ -746,7 +731,7 @@ function scene11() {
 
   //Add to screen
   scene.addChild(trace, blockLeft, blockRight, hill, person); //addChild for PIXI.js el. appendChild for DOM el
-  cleanIntervals = []; button.onclick = () => changeLink(cleanIntervals, 12);
+  button.onclick = () => changeLink(12);
 
   app.stage.addChild(scene);
 }
@@ -791,18 +776,18 @@ function scene12() {
     i++
     if (i == 40) i = 0;
   };
-  intervalHandler("firePlay", 42, fireInterval, "add");
+  addInterval("firePlay", 42, fireInterval);
   const blinkingEyes = () => {
     if (eyes.currentFrame == 0 && Math.random() > 0.6) {
       eyes.gotoAndStop(1);
       setTimeout(() => eyes.gotoAndStop(0), 100);
     }
   };
-  intervalHandler("blinkingEyes", 1000, blinkingEyes, "add");
+  addInterval("blinkingEyes", 1000, blinkingEyes);
 
   //Add to screen
   scene.addChild(person); //addChild for PIXI.js el. appendChild for DOM el
-  slideIntervals["12"] = ["firePlay", "blinkingEyes"]; button.onclick = () => slidesChange(slideIntervals[12], 1);
+  button.onclick = () => slidesChange(1);
 
   app.stage.addChild(scene);
 }

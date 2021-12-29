@@ -10,7 +10,7 @@ function initApp() {
   
   right.appendChild(app.view); 
   left.className = "poetic dark"; right.className = "";
-  slidesChange([], "1");
+  slidesChange("1");
 
   initNav()
 };
