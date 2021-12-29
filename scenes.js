@@ -361,13 +361,7 @@ function scene6() {
   const stone = new PIXI.Sprite(s["Stone6.png"]); const stone2 = new PIXI.Sprite(s["Stone6.png"])
   const leftArm = new PIXI.Sprite(s["LeftArm6.png"]); const rightArm = new PIXI.Sprite(s["RightArm6.png"]);
   const base = new PIXI.Sprite(s["BodyAndHead6.png"]); const stick = new PIXI.Sprite(s["Stick6.png"]);
-  let fire = [];
-  for (let i = 0; i < 41; i++) {
-    j = i.toString();
-    do { j = "0" + j } while (j.length < 4)
-    fire.push(new PIXI.Sprite(s[`lit${j}.png`]));
-  }
-  fire = new PIXI.AnimatedSprite(fire);
+  let fire = getFire();
   let eyes = [new PIXI.Sprite(s['Eyes6.png']), new PIXI.Sprite(s['ClosedEyes6.png'])];
   eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0); 
 
@@ -385,8 +379,7 @@ function scene6() {
   //Size
   person.scale.x = 1/2.8; person.scale.y = 1/2.8; person.x = app.width / 2.3; person.y = app.height / 2.7; 
   hill.scale.x = 1/1.24; hill.scale.y = 1/1.2;
-  fire.scale.x = 1/1.3; fire.scale.y = 1/1.3; fire.anchor.set(-0.99, -1.3);
-  fire.loop = true; fire.animationSpeed = 0.5; 
+  fire.scale.set(0.6); fire.position.set(205,280); 
   stick.scale.x = 1/4.7; stick.scale.y = 1/4.7; stick.x = 330; stick.y = 390;
   stone.scale.set(1/2.2, 1/2.2); stone.anchor.set(0,-1.7); stone2.scale.set(1/2.2, 1/2.2); stone2.anchor.set(-0.1,-2.4);
 
@@ -412,10 +405,10 @@ function scene6() {
       .to({angle: 0, x: 0, y: 0}, 100)
       .call(() => {
         scene.removeChildren();
-        scene.addChild(fire); scene.addChild(hill); scene.addChild(person);
+        scene.addChild(stick, fire, hill, person);
         let i = 0;
         fireInterval = () => {
-          fire.gotoAndStop(i)
+          fire.children[1].gotoAndStop(i)
           i++
           if (i == 40) i = 0;
         };
@@ -443,7 +436,6 @@ function scene7() {
   //Init Sprites
   const s1 = loader.resources["assets/1/1.json"].spritesheet.textures;
   const s = loader.resources["assets/7/7.json"].spritesheet.textures;
-  const s6 = loader.resources["assets/6/6.json"].spritesheet.textures;
 
   const base = new PIXI.Sprite(s1['BodyArms1.png']);
   const hill =  new PIXI.Sprite(s1['roundHill1.png']); const bg = new PIXI.Sprite(s['HillTrail7.png']); 
@@ -452,15 +444,7 @@ function scene7() {
 
   let fires = []
   for (let f = 0; f < 4; f++) {
-    let fire = [];
-    for (let i = 0; i < 41; i++) {
-      j = i.toString();
-      do { j = "0" + j } while (j.length < 4)
-      fire.push(new PIXI.Sprite(s6[`lit${j}.png`]));
-    }
-    fire = new PIXI.AnimatedSprite(fire);
-    fire.loop = true; fire.animationSpeed = 0.5; 
-
+    let fire = getFire();
     if (f == 0) fg.addChild(fire);
     else bg.addChild(fire);
     fires.push(fire);
@@ -481,8 +465,10 @@ function scene7() {
   person.addChild(base); person.addChild(eyes); fg.addChild(person, hill);  
   person.scale.x = 0.5; person.scale.y = 0.5; person.x = app.width / 10; person.y = app.height / 6; 
   hill.anchor.set(0.08, 0.12); bg.scale.set(1/1.25, 1/1.25);
-  fires[0].anchor.set(-0.7,-0.85); fires[1].scale.set(0.5, 0.5); fires[1].anchor.set(-3,-1.5);
-  fires[2].scale.set(0.25, 0.25); fires[2].anchor.set(-9.3, -1.8); fires[3].scale.set(1/8, 1/8); fires[3].anchor.set(-21.9, -1.2);
+  fires[0].scale.set(0.6); fires[0].pivot.set(-400,-470); 
+  fires[1].scale.set(0.3); fires[1].pivot.set(-1600,-800);
+  fires[2].scale.set(0.15); fires[2].pivot.set(-4600, -900); 
+  fires[3].scale.set(0.075); fires[3].pivot.set(-10900, -800);
 
   //Create animation
   const blurFG = new PIXI.filters.BlurFilter(0); const blurBG = new PIXI.filters.BlurFilter(10);
@@ -510,7 +496,7 @@ function scene7() {
   intervalHandler("blinkingEyes", 1000, blinkingEyes, "add");
   let i = 0;
   const firePlay = () => {
-    for (f of fires) {f.gotoAndStop(i)}
+    for (f of fires) {f.children[1].gotoAndStop(i)}
     i++
     if (i == 40) i = 0;
   }
@@ -769,7 +755,14 @@ function scene12() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
   const s = loader.resources["assets/12/12.json"].spritesheet.textures;
-  const hill = new PIXI.Sprite(s['roundHill.png']);
+  const s1 = loader.resources["assets/1/1.json"].spritesheet.textures;
+  const s2 = loader.resources["assets/2/2.json"].spritesheet.textures;
+  const s6 = loader.resources["assets/6/6.json"].spritesheet.textures;
+
+  const arms = new PIXI.Sprite(s["Arms12.png"]); const base = new PIXI.Sprite(s2["Body2.png"]);
+  let eyes = [new PIXI.Sprite(s1['Eyes1.png']), new PIXI.Sprite(s1['ClosedEyes1.png'])]; 
+  eyes = new PIXI.AnimatedSprite(eyes); eyes.gotoAndStop(0);  
+  let fire = getFire().children[1]; const stick = new PIXI.Sprite(s6["Stick6.png"]);
 
   //Init Text
   const poem = slideText["12"];
@@ -783,13 +776,50 @@ function scene12() {
   button.className = "poetic"; left.appendChild(button);
 
   //Size
-  hill.scale.x = 1/1.24; hill.scale.y = 1/1.26;
+  person.addChild(base, arms, eyes, stick, fire); 
+  person.scale.set(0.64); person.position.set(212, 100);
+  fire.position.set(-137, 50); stick.scale.set(0.75, 0.25); stick.position.set(165, 380);
+  fire.scale.set(1/0.64);
 
   //Create animation
+  Tween.get(person, {loop: true})
+    .to({y: 70}, 1500, createjs.Ease.sineInOut)
+    .to({y: 100}, 1500, createjs.Ease.sineInOut)
+  let i = 0;
+  fireInterval = () => {
+    fire.gotoAndStop(i)
+    i++
+    if (i == 40) i = 0;
+  };
+  intervalHandler("firePlay", 42, fireInterval, "add");
+  const blinkingEyes = () => {
+    if (eyes.currentFrame == 0 && Math.random() > 0.6) {
+      eyes.gotoAndStop(1);
+      setTimeout(() => eyes.gotoAndStop(0), 100);
+    }
+  };
+  intervalHandler("blinkingEyes", 1000, blinkingEyes, "add");
 
   //Add to screen
-  scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
-  //cleanIntervals = []; button.onclick = () => slidesChange(cleanIntervals, 3);
+  scene.addChild(person); //addChild for PIXI.js el. appendChild for DOM el
+  slideIntervals["12"] = ["firePlay", "blinkingEyes"]; button.onclick = () => slidesChange(slideIntervals[12], 1);
 
   app.stage.addChild(scene);
+}
+
+function getFire() {
+  const all = new PIXI.Container(); const s6 = loader.resources["assets/6/6.json"].spritesheet.textures;
+
+  const stick = new PIXI.Sprite(s6["Stick6.png"]);
+  let fire = [];
+  for (let i = 0; i < 41; i++) {
+    j = i.toString();
+    do { j = "0" + j } while (j.length < 4)
+    fire.push(new PIXI.Sprite(s6[`lit${j}.png`]));
+  }
+  fire = new PIXI.AnimatedSprite(fire);
+
+  stick.scale.x = 1/3; stick.scale.y = 1/3; stick.anchor.set(-2.53,-1);
+  all.addChild(stick, fire);
+  return all;
 }
