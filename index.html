@@ -7,8 +7,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2021 Annual Reflection</title>
   <link href="./assets/bootstrap.min.css" rel="stylesheet">
-  <link href="./poetic.css" rel="stylesheet">
   <link rel="icon" type="image/gif" href="/assets/fire.gif">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Comforter');
+    @import url('https://fonts.googleapis.com/css?family=Forum');
+
+    body {
+      margin-left: 0;
+      margin-right: 0;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    div.row {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      align-items: stretch;
+    }
+
+    div.row>div {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    *.vcentre {
+      margin: auto;
+    }
+
+    div.row>div.dark {
+      background-color: #202020;
+      color: #FFF;
+      font-family: 'Comforter';
+    }
+
+    div.row>div.practical {
+      background-color: #e5d6b6;
+      font-family: 'Forum';
+    }
+
+    div.row>div.button:hover {
+      opacity: 0.7;
+      cursor: pointer;
+    }
+
+    h1 {
+      font-size: 10rem;
+    }
+  </style>
 </head>
 
 <body>

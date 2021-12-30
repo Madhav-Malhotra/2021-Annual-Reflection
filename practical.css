@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Forum');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+li {
+  font-family: "Forum";
+}
+
+h3 {
+  font-size: 2.5rem;
+}
+
+h4 {
+  font-size: 1.6rem;
+}
+
+p,
+li {
+  font-size: 1.3rem;
+}
+
+body {
+  background-color: #e5d6b6;
+}
+
+div.body {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+a {
+  color: rgb(187, 33, 33);
+  transition: 0.3s;
+}
+
+a:hover {
+  color: black;
+}
+
+.c7 {
+  font-weight: bold;
+}
+
+.c2 {
+  margin-top: 3rem;
+}
+
+p {
+  margin-top: 0.6rem;
+}
+
+img#home-button {
+  position: sticky;
+  width: 35px;
+  top: 10px;
+  left: 10px;
+  transition: 0.3s;
+}
+
+img#home-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+img#home-button.light {
+  filter: invert(1);
+  width: 30px;
+}
+
+button#music-button {
+  font-family: 'Forum';
+  font-size: 1.5rem;
+  color: black;
+  background-color: white;
+  border-radius: 20px;
+  padding: 0 15px;
+  border: 0px;
+  position: sticky;
+  bottom: 10px;
+  left: 10px;
+  transition: 0.3s;
+}
+
+button#music-button:hover {
+  filter: brightness(0.8);
+  cursor: pointer;
+}
+
+button#music-button.dark {
+  color: white;
+  background-color: black;
+}

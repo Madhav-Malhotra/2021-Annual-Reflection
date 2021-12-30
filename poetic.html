@@ -13,6 +13,7 @@
 
 <body>
   <img src="assets/home.png" id="home-button" class="light" />
+  <button id="music-button" onclick="musicToggle(this)">Sound Off</button>
   <div class="row">
     <div class="col-md-12 col-lg-6 text-center" id="left"></div>
     <div class="col-md-12 col-lg-6" id="right"></div>
@@ -23,9 +24,7 @@
   <script src="./intervals.js"></script>
   <script src="./scenes.js"></script>
   <script src="./init.js"></script>
-  <script>
-    document.getElementById("home-button").addEventListener("click", () => window.location = "/index.html");
-  </script>
+  <script src="./music.js"></script>
 </body>
 
 </html>

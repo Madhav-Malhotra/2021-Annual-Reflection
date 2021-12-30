@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Comforter');
 @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
-@import url('https://fonts.googleapis.com/css?family=Forum');
 
 /* =============== SIZING ================== */
 
@@ -26,6 +25,10 @@ div.row > div {
   flex: 1;
 }
 
+*.vcentre {
+  margin: auto;
+}
+
 div.row > div#left {
   padding-left: 20px;
   padding-top: 50px;
@@ -34,9 +37,7 @@ div.row > div#left {
   overflow-y: auto;
 }
 
-*.vcentre {
-  margin: auto;
-}
+/* =============== CONTROLS ================== */
 
 div.menu {
   position: fixed;
@@ -61,7 +62,6 @@ div.menu > a:hover {
   text-decoration: none;
 }
 
-
 img#home-button {
   position: absolute;
   width: 40px;
@@ -80,14 +80,32 @@ img#home-button.light {
   width: 30px;
 }
 
+button#music-button {
+  font-family: 'Shadows Into Light';
+  color: black;
+  background-color: white;
+  border-radius: 20px;
+  padding: 0 15px;
+  border: 0px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  transition: 0.3s;
+}
+
+button#music-button:hover {
+  filter: brightness(0.8);
+  cursor: pointer;
+}
+
+button#music-button.dark {
+  color: white;
+  background-color: black;
+}
 /* =============== COLOURS ================== */
 div.row > div.dark {
   background-color: #202020;
   color: #FFF;
-}
-
-div.row > div.practical {
-  background-color: #e5d6b6;
 }
 
 div.row > div.button:hover {
@@ -137,10 +155,6 @@ div.poetic h1, div.poetic h2, div.poetic h3 {
 
 div.poetic p, div.poetic button {
   font-family: 'Shadows Into Light';
-}
-
-div.practical h1, div.practical h2, div.practical h3, div.practical p {
-  font-family: 'Forum';
 }
 
 h1 { font-size: 10rem; }
