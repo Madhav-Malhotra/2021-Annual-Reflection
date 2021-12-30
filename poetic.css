@@ -61,6 +61,25 @@ div.menu > a:hover {
   text-decoration: none;
 }
 
+
+img#home-button {
+  position: absolute;
+  width: 40px;
+  top: 10px;
+  left: 10px;
+  transition: 0.3s;
+}
+
+img#home-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+img#home-button.light {
+  filter: invert(1);
+  width: 30px;
+}
+
 /* =============== COLOURS ================== */
 div.row > div.dark {
   background-color: #202020;

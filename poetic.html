@@ -8,9 +8,11 @@
   <title>2021 Poetic</title>
   <link href="./assets/bootstrap.min.css" rel="stylesheet">
   <link href="./poetic.css" rel="stylesheet">
+  <link rel="icon" type="image/gif" href="/assets/fire.gif">
 </head>
 
 <body>
+  <img src="assets/home.png" id="home-button" class="light" />
   <div class="row">
     <div class="col-md-12 col-lg-6 text-center" id="left"></div>
     <div class="col-md-12 col-lg-6" id="right"></div>
@@ -21,6 +23,9 @@
   <script src="./intervals.js"></script>
   <script src="./scenes.js"></script>
   <script src="./init.js"></script>
+  <script>
+    document.getElementById("home-button").addEventListener("click", () => window.location = "/index.html");
+  </script>
 </body>
 
 </html>
