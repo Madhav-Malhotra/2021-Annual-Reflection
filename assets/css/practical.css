@@ -12,6 +12,11 @@ li {
   font-family: "Forum";
 }
 
+h1 { 
+  font-size: 10rem;
+  font-weight: lighter;
+}
+
 h3 {
   font-size: 2.5rem;
 }
@@ -27,6 +32,8 @@ li {
 
 body {
   background-color: #e5d6b6;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 div.body {
@@ -34,6 +41,16 @@ div.body {
   margin-right: 20%;
   margin-top: 3em;
   margin-bottom: 3em;
+}
+
+div.intro {
+  background-color: #e5d6b6;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  text-align: center;
+  z-index: 5;
+  opacity: 1;
 }
 
 a {
@@ -70,11 +87,6 @@ img#home-button:hover {
   cursor: pointer;
 }
 
-img#home-button.light {
-  filter: invert(1);
-  width: 30px;
-}
-
 button#music-button {
   font-family: 'Forum';
   font-size: 1.5rem;
@@ -97,4 +109,24 @@ button#music-button:hover {
 button#music-button.dark {
   color: white;
   background-color: black;
+}
+
+button#start-button {
+  background-color: rgba(0,0,0,0);
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;  
+  padding: 0.2em 0.8em;
+  border: dashed 2px black;
+  border-radius: 5px;
+  font-family: 'Forum';
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+button#start-button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }

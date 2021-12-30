@@ -9,6 +9,8 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  background-color: #202020;
+  color: white;
 }
 
 div.row {
@@ -35,6 +37,9 @@ div.row > div#left {
   padding-bottom: 50px;
   padding-right: 20px;
   overflow-y: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  max-height: 100vh;
 }
 
 /* =============== CONTROLS ================== */
@@ -102,7 +107,11 @@ button#music-button.dark {
   color: white;
   background-color: black;
 }
+
+
 /* =============== COLOURS ================== */
+div.row { background-color: #202020; }
+
 div.row > div.dark {
   background-color: #202020;
   color: #FFF;
@@ -161,3 +170,9 @@ h1 { font-size: 10rem; }
 h2 { font-size: 5.5rem; }
 p, button { font-size: 2.8rem; }
 p.break { margin-bottom: 0.7em; }
+
+p.error {
+  margin: 50px 10px;
+  text-align: center;
+  font-family: "Shadows Into Light";
+}

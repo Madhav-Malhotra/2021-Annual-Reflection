@@ -7,9 +7,7 @@ let musicCopy = JSON.parse(JSON.stringify(music));
 
 function musicLoader() {
   window.onclick = null;
-  window.onscroll = null;
   let currMusic = musicCopy.length > 0 ? musicCopy : initMusicCopy();
-  console.log(currMusic);
   const rand = Math.floor(Math.random() * currMusic.length);
   const song = new Audio(`assets/music/${currMusic[rand]}.mp3`);
   song.play();
