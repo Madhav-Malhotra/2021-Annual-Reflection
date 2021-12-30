@@ -10,14 +10,15 @@ const Ticker = createjs.Ticker;
 Ticker.framerate = 60;
 // ================================ CHANGE SLIDES ================================
 function slidesChange(slideNum) {
-  clearIntervals("remove");
-  for (c of app.stage.children) {Tween.removeTweens(c)};
+  clearIntervals(); clearDomTween();
   app.stage.removeChildren(); left.innerHTML = "";
+
   const sceneLoad = slides[slideNum];
   for (let i = 1; i <= slideNum; i++) {
     const pos = `assets/${i}/${i}.json`;
     if (!loader.resources[pos] && i != slideNum) loader.add(pos);
     else if (!loader.resources[pos] && i == slideNum) loader.add(pos).load(sceneLoad);
+    else if (loader.resources[pos] && i == slideNum) sceneLoad();
   };
 }
 
@@ -97,7 +98,7 @@ function scene1() {
   left.appendChild(title); left.appendChild(text); left.appendChild(button);
   button.onclick = () => changeLink(2);
 
-  app.stage.addChild(scene);
+  app.stage.addChild(scene); addDomEl("person", person);
 }
 
 function scene2() {
@@ -161,7 +162,7 @@ function scene2() {
   scene.addChild(child);
   button.onclick = () => changeLink(3);
 
-  app.stage.addChild(scene);
+  app.stage.addChild(scene); addDomEl("person", person); addDomEl("child", child);
 }
 
 function scene3() {
@@ -219,7 +220,7 @@ function scene3() {
   scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
   button.onclick = () => changeLink(4);
 
-  app.stage.addChild(scene);
+  app.stage.addChild(scene); addDomEl("person", person); addDomEl("hill", hill);
 }
 
 function scene4() {
@@ -287,7 +288,7 @@ function scene4() {
   scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
   button.onclick = () => changeLink(5);
 
-  app.stage.addChild(scene);
+  app.stage.addChild(scene); addDomEl("person", person); addDomEl("hill", hill);
 }
 
 function scene5() {
@@ -334,7 +335,7 @@ function scene5() {
   scene.addChild(person); scene.addChild(hill); //addChild for PIXI.js el. appendChild for DOM el
   button.onclick = () => changeLink(6);
 
-  app.stage.addChild(scene);
+  app.stage.addChild(scene); addDomEl("person", person); addDomEl("head", head);
 }
 
 function scene6() {
@@ -413,7 +414,7 @@ function scene6() {
   scene.addChild(stick); scene.addChild(hill); scene.addChild(person); //addChild for PIXI.js el. appendChild for DOM el
   button.onclick = light;
 
-  app.stage.addChild(scene);
+  app.stage.addChild(scene); addDomEl("person", person); addDomEl("leftArm", leftArm); addDomEl("rightArm", rightArm);
 }
 
 function scene7() {
@@ -491,7 +492,7 @@ function scene7() {
   scene.addChild(bg); scene.addChild(fg); //addChild for PIXI.js el. appendChild for DOM el
   button.onclick = () => changeLink(8);
 
-  app.stage.addChild(scene);
+  app.stage.addChild(scene); addDomEl("person", person); addDomEl("blurFG", blurFG); addDomEl("blurBG", blurBG);
 }
 
 function scene8() {
@@ -577,7 +578,7 @@ function scene8() {
   scene.addChild(hill); scene.addChild(person); scene.addChild(snow); //addChild for PIXI.js el. appendChild for DOM el
   button.onclick = () => changeLink(9);
 
-  app.stage.addChild(scene);
+  app.stage.addChild(scene); addDomEl("person", person); addDomEl("snow", snow); addDomEl("leftArm", leftArm); addDomEl("rightArm", rightArm);
 }
 
 function scene9() {
@@ -642,7 +643,7 @@ function scene9() {
   scene.addChild(hill); scene.addChild(person); scene.addChild(wind); //addChild for PIXI.js el. appendChild for DOM el
   button.onclick = () => changeLink(10);
 
-  app.stage.addChild(scene);
+  app.stage.addChild(scene); addDomEl("person", person);
 }
 
 function scene10() {
@@ -680,7 +681,7 @@ function scene10() {
   scene.addChild(ashes, fire); //addChild for PIXI.js el. appendChild for DOM el
   button.onclick = () => changeLink(11);
 
-  app.stage.addChild(scene);
+  app.stage.addChild(scene); addDomEl("fire", fire);
 }
 
 function scene11() {
@@ -733,7 +734,7 @@ function scene11() {
   scene.addChild(trace, blockLeft, blockRight, hill, person); //addChild for PIXI.js el. appendChild for DOM el
   button.onclick = () => changeLink(12);
 
-  app.stage.addChild(scene);
+  app.stage.addChild(scene); addDomEl("person", person); addDomEl("trace", trace); addDomEl("hill", hill);
 }
 
 function scene12() {
@@ -789,7 +790,7 @@ function scene12() {
   scene.addChild(person); //addChild for PIXI.js el. appendChild for DOM el
   button.onclick = () => slidesChange(1);
 
-  app.stage.addChild(scene);
+  app.stage.addChild(scene); addDomEl("person", person);
 }
 
 function getFire() {

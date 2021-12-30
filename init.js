@@ -19,7 +19,7 @@ function initNav() {
   const nav = document.createElement("div"); nav.className = "menu";
   for (let i = 1; i < 13; i++) {
     const link = document.createElement("a");
-    link.innerText = " "; link.onclick = () => changeLink(slideIntervals[i], i);
+    link.innerText = " "; link.onclick = () => changeLink(i);
     if (i == 1) link.className = "active";
     nav.appendChild(link);
   }

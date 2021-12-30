@@ -20,3 +20,16 @@ function removeSpecific(name) {
   clearInterval(id);
   delete intervalManifest[name];
 }
+
+const domManifest = {};
+
+function addDomEl(domName, domEl) {
+  if (!domManifest[domName]) domManifest[domName] = domEl;
+}
+
+function clearDomTween() {
+  for (k of Object.keys(domManifest)) {
+    createjs.Tween.removeTweens(domManifest[k]);
+    delete domManifest[k];
+  }
+}
