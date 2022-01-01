@@ -15,7 +15,7 @@ function slidesChange(slideNum) {
 
   const sceneLoad = slides[slideNum];
   for (let i = 1; i <= slideNum; i++) {
-    const pos = `/assets/${i}/${i}.json`;
+    const pos = `./assets/${i}/${i}.json`;
     if (!loader.resources[pos] && i != slideNum) loader.add(pos);
     else if (!loader.resources[pos] && i == slideNum) loader.add(pos).load(sceneLoad);
     else if (loader.resources[pos] && i == slideNum) sceneLoad();
@@ -64,7 +64,7 @@ const slideText = {
 function scene1() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
-  const s = loader.resources["/assets/1/1.json"].spritesheet.textures;
+  const s = loader.resources["./assets/1/1.json"].spritesheet.textures;
   const body = new PIXI.Sprite(s['BodyArms1.png']); 
   const hill = new PIXI.Sprite(s['roundHill1.png']);
   let eyes = [new PIXI.Sprite(s['Eyes1.png']), new PIXI.Sprite(s['ClosedEyes1.png'])]; 
@@ -104,8 +104,8 @@ function scene1() {
 function scene2() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
-  const s1 = loader.resources["/assets/1/1.json"].spritesheet.textures;
-  const s = loader.resources["/assets/2/2.json"].spritesheet.textures;
+  const s1 = loader.resources["./assets/1/1.json"].spritesheet.textures;
+  const s = loader.resources["./assets/2/2.json"].spritesheet.textures;
   const body = new PIXI.Sprite(s['Body2.png']); const child = new PIXI.Sprite(s["Body2.png"]);
   const leftArm = new PIXI.Sprite(s['Left_trim2.png']); const rightArm = new PIXI.Sprite(s['Right_trim2.png']);
   let eyes = [new PIXI.Sprite(s['SmilingEyes2.png']), new PIXI.Sprite(s1['Eyes1.png'])]; const oneEye = new PIXI.Sprite(s["OneEye2.png"]);
@@ -168,7 +168,7 @@ function scene2() {
 function scene3() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
-  const s = loader.resources["/assets/3/3.json"].spritesheet.textures;
+  const s = loader.resources["./assets/3/3.json"].spritesheet.textures;
   const body = new PIXI.Sprite(s['SideBody3.png']); 
   const hill = new PIXI.Sprite(s['Hill3.png']);
   let eyes = [new PIXI.Sprite(s['SideEye3.png']), new PIXI.Sprite(s['SideEyeGlare3.png'])];
@@ -226,8 +226,8 @@ function scene3() {
 function scene4() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
-  const s = loader.resources["/assets/4/4.json"].spritesheet.textures;
-  const s3 = loader.resources["/assets/3/3.json"].spritesheet.textures;
+  const s = loader.resources["./assets/4/4.json"].spritesheet.textures;
+  const s3 = loader.resources["./assets/3/3.json"].spritesheet.textures;
   const hill = new PIXI.Sprite(s['Flat4.png']);
   const body = new PIXI.Sprite(s3['SideBody3.png']); 
   let eyes = [new PIXI.Sprite(s3['SideEye3.png']), new PIXI.Sprite(s['DizzyEye4.png'])];
@@ -294,8 +294,8 @@ function scene4() {
 function scene5() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
-  const s = loader.resources["/assets/5/5.json"].spritesheet.textures;
-  const s4 = loader.resources["/assets/4/4.json"].spritesheet.textures;
+  const s = loader.resources["./assets/5/5.json"].spritesheet.textures;
+  const s4 = loader.resources["./assets/4/4.json"].spritesheet.textures;
   const base = new PIXI.Sprite(s['SideBody5.png']); const head = new PIXI.Sprite(s['Head5.png']);
   const sadEye = new PIXI.Sprite(s['SadEye5.png']); const hill = new PIXI.Sprite(s4['Flat4.png']);
 
@@ -341,8 +341,8 @@ function scene5() {
 function scene6() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
-  const s = loader.resources["/assets/6/6.json"].spritesheet.textures;
-  const s1 = loader.resources["/assets/1/1.json"].spritesheet.textures;
+  const s = loader.resources["./assets/6/6.json"].spritesheet.textures;
+  const s1 = loader.resources["./assets/1/1.json"].spritesheet.textures;
   const hill = new PIXI.Sprite(s1['roundHill1.png']);
   const stone = new PIXI.Sprite(s["Stone6.png"]); const stone2 = new PIXI.Sprite(s["Stone6.png"])
   const leftArm = new PIXI.Sprite(s["LeftArm6.png"]); const rightArm = new PIXI.Sprite(s["RightArm6.png"]);
@@ -420,8 +420,8 @@ function scene6() {
 function scene7() {
   const scene = new PIXI.Container(); const person = new PIXI.Container(); const fg = new PIXI.Container();
   //Init Sprites
-  const s1 = loader.resources["/assets/1/1.json"].spritesheet.textures;
-  const s = loader.resources["/assets/7/7.json"].spritesheet.textures;
+  const s1 = loader.resources["./assets/1/1.json"].spritesheet.textures;
+  const s = loader.resources["./assets/7/7.json"].spritesheet.textures;
 
   const base = new PIXI.Sprite(s1['BodyArms1.png']);
   const hill =  new PIXI.Sprite(s1['roundHill1.png']); const bg = new PIXI.Sprite(s['HillTrail7.png']); 
@@ -498,10 +498,10 @@ function scene7() {
 function scene8() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
-  const s = loader.resources["/assets/8/8.json"].spritesheet.textures;
-  const s1 = loader.resources["/assets/1/1.json"].spritesheet.textures;
-  const s2 = loader.resources["/assets/2/2.json"].spritesheet.textures;
-  const s4 = loader.resources["/assets/4/4.json"].spritesheet.textures;
+  const s = loader.resources["./assets/8/8.json"].spritesheet.textures;
+  const s1 = loader.resources["./assets/1/1.json"].spritesheet.textures;
+  const s2 = loader.resources["./assets/2/2.json"].spritesheet.textures;
+  const s4 = loader.resources["./assets/4/4.json"].spritesheet.textures;
 
   const snow = new PIXI.Sprite(s['Snow8.png']); const hill = new PIXI.Sprite(s4["Flat4.png"]);
   const body = new PIXI.Sprite(s2['Body2.png']);  
@@ -584,9 +584,9 @@ function scene8() {
 function scene9() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
-  const s = loader.resources["/assets/9/9.json"].spritesheet.textures;
-  const s1 = loader.resources["/assets/1/1.json"].spritesheet.textures;
-  const s2 = loader.resources["/assets/2/2.json"].spritesheet.textures;
+  const s = loader.resources["./assets/9/9.json"].spritesheet.textures;
+  const s1 = loader.resources["./assets/1/1.json"].spritesheet.textures;
+  const s2 = loader.resources["./assets/2/2.json"].spritesheet.textures;
 
   const hill = new PIXI.Sprite(s1['roundHill1.png']); const base = new PIXI.Sprite(s2["Body2.png"]);
   const rightArm = new PIXI.Sprite(s["RightArm9.png"]); const leftArm = new PIXI.Sprite(s["LeftArm9.png"]);
@@ -649,9 +649,9 @@ function scene9() {
 function scene10() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
-  const s = loader.resources["/assets/10/10.json"].spritesheet.textures;
+  const s = loader.resources["./assets/10/10.json"].spritesheet.textures;
   const ashes = new PIXI.Sprite(s["Ashes10.png"]);
-  let fire = new PIXI.Texture.from("/assets/10/fire.mp4");
+  let fire = new PIXI.Texture.from("./assets/10/fire.mp4");
   fire.baseTexture.resource.source.loop = true; fire = new PIXI.Sprite(fire);
 
   //Init Text
@@ -687,10 +687,10 @@ function scene10() {
 function scene11() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
-  const s = loader.resources["/assets/11/11.json"].spritesheet.textures;
-  const s2 = loader.resources["/assets/2/2.json"].spritesheet.textures;
-  const s8 = loader.resources["/assets/8/8.json"].spritesheet.textures;
-  const s4 = loader.resources["/assets/4/4.json"].spritesheet.textures;
+  const s = loader.resources["./assets/11/11.json"].spritesheet.textures;
+  const s2 = loader.resources["./assets/2/2.json"].spritesheet.textures;
+  const s8 = loader.resources["./assets/8/8.json"].spritesheet.textures;
+  const s4 = loader.resources["./assets/4/4.json"].spritesheet.textures;
 
   const trace = new PIXI.Sprite(s["Trace11.png"]); const hill = new PIXI.Sprite(s4["Flat4.png"]);
   const blockLeft = new PIXI.Sprite(s["Block11.png"]); const blockRight = new PIXI.Sprite(s["Block11.png"]);
@@ -740,10 +740,10 @@ function scene11() {
 function scene12() {
   const scene = new PIXI.Container(); const person = new PIXI.Container();
   //Init Sprites
-  const s = loader.resources["/assets/12/12.json"].spritesheet.textures;
-  const s1 = loader.resources["/assets/1/1.json"].spritesheet.textures;
-  const s2 = loader.resources["/assets/2/2.json"].spritesheet.textures;
-  const s6 = loader.resources["/assets/6/6.json"].spritesheet.textures;
+  const s = loader.resources["./assets/12/12.json"].spritesheet.textures;
+  const s1 = loader.resources["./assets/1/1.json"].spritesheet.textures;
+  const s2 = loader.resources["./assets/2/2.json"].spritesheet.textures;
+  const s6 = loader.resources["./assets/6/6.json"].spritesheet.textures;
 
   const arms = new PIXI.Sprite(s["Arms12.png"]); const base = new PIXI.Sprite(s2["Body2.png"]);
   let eyes = [new PIXI.Sprite(s1['Eyes1.png']), new PIXI.Sprite(s1['ClosedEyes1.png'])]; 
@@ -794,7 +794,7 @@ function scene12() {
 }
 
 function getFire() {
-  const all = new PIXI.Container(); const s6 = loader.resources["/assets/6/6.json"].spritesheet.textures;
+  const all = new PIXI.Container(); const s6 = loader.resources["./assets/6/6.json"].spritesheet.textures;
 
   const stick = new PIXI.Sprite(s6["Stick6.png"]);
   let fire = [];

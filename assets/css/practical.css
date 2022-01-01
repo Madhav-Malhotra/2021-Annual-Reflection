@@ -32,7 +32,7 @@ li {
 
 body {
   background-color: #e5d6b6;
-  overflow-y: hidden;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
@@ -129,4 +129,19 @@ button#start-button:hover {
   background-color: black;
   color: white;
   cursor: pointer;
+}
+
+div.outline {
+  position: sticky;
+  z-index: 3;
+  max-width: 175px;
+  margin-left: auto;
+  margin-bottom: -500px;
+  margin-top: -50px;
+  top: 50px;
+  right: 0px;
+}
+
+div.outline>p {
+  font-size: 1rem;
 }

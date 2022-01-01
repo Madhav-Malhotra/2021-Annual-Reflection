@@ -1,4 +1,4 @@
-document.getElementById("home-button").addEventListener("click", () => window.location = "/index.html");
+document.getElementById("home-button").addEventListener("click", () => window.location = "./index.html");
 
 const music = ["CleanWaterUponYou", "Eternity", "MemoirOfSolitude", "Motion", "WeAreSaved"];
 let currAudio;
@@ -9,7 +9,7 @@ function musicLoader() {
   window.onclick = null;
   let currMusic = musicCopy.length > 0 ? musicCopy : initMusicCopy();
   const rand = Math.floor(Math.random() * currMusic.length);
-  const song = new Audio(`assets/music/${currMusic[rand]}.mp3`);
+  const song = new Audio(`./assets/music/${currMusic[rand]}.mp3`);
   song.play();
 
   currAudio = song;
